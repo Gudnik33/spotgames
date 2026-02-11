@@ -20,9 +20,22 @@
             color: #fff;
             min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 70px;
+            padding-bottom: 80px;
         }
 
+        /* ПОЛНОЭКРАННЫЙ РЕЖИМ ДЛЯ ТЕЛЕГРАМ */
+        .tg-fullscreen {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        /* НИЖНЕЕ МЕНЮ - ТРИ КНОПКИ */
         .bottom-menu {
             position: fixed;
             bottom: 0;
@@ -32,9 +45,10 @@
             border-top: 1px solid #252530;
             display: flex;
             justify-content: space-around;
-            padding: 10px 0;
+            padding: 8px 0;
             z-index: 1000;
-            height: 70px;
+            height: 75px;
+            backdrop-filter: blur(10px);
         }
 
         .menu-item {
@@ -42,39 +56,53 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            padding: 10px;
+            gap: 4px;
+            padding: 8px;
             color: #666;
             cursor: pointer;
             transition: all 0.3s ease;
             flex: 1;
+            border-radius: 12px;
         }
 
         .menu-item.active {
             color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
         }
 
         .menu-item i {
-            font-size: 20px;
+            font-size: 22px;
         }
 
         .menu-item span {
             font-size: 11px;
-            font-weight: 500;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
+        .menu-item .coin-badge {
+            background: #ffa726;
+            color: #000;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+
         .screen {
             display: none;
-            min-height: calc(100vh - 70px);
+            min-height: calc(100vh - 80px);
             padding: 15px;
+            width: 100%;
         }
 
         .screen.active {
             display: block;
         }
 
+        /* ========== ИГРЫ - ПОЛНОСТЬЮ ВОССТАНОВЛЕНЫ ========== */
         .games-header {
             text-align: center;
             padding: 20px 0 25px;
@@ -160,6 +188,7 @@
             font-size: 18px;
         }
 
+        /* ========== ПРОФИЛЬ ========== */
         .profile-header {
             text-align: center;
             padding: 20px 0 30px;
@@ -236,31 +265,7 @@
             transition: all 0.3s ease;
         }
 
-        .action-btn:hover {
-            background: #252530;
-            transform: translateY(-2px);
-        }
-
-        .action-btn i {
-            font-size: 20px;
-            color: #ffa726;
-            width: 30px;
-        }
-
-        .action-btn .text {
-            flex: 1;
-        }
-
-        .action-btn .title {
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
-
-        .action-btn .desc {
-            font-size: 11px;
-            opacity: 0.7;
-        }
-
+        /* ========== МИНЫ - ПОЛНОСТЬЮ ИСПРАВЛЕНЫ ========== */
         .game-header {
             display: flex;
             justify-content: space-between;
@@ -285,32 +290,39 @@
 
         .game-stats {
             display: flex;
-            gap: 20px;
+            gap: 25px;
+            background: #15151e;
+            padding: 10px 20px;
+            border-radius: 12px;
+            border: 1px solid #252530;
         }
 
         .game-stat {
             text-align: center;
+            min-width: 80px;
         }
 
         .game-stat-value {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
             color: #ffa726;
+            margin-bottom: 4px;
         }
 
         .game-stat-label {
-            font-size: 11px;
+            font-size: 10px;
             opacity: 0.7;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
+        /* ПОЛЕ МИН */
         .mines-field {
             display: grid;
             gap: 8px;
             margin: 20px auto;
             justify-content: center;
             max-width: 100%;
-            overflow: hidden;
         }
 
         .mines-cell {
@@ -321,16 +333,10 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s ease;
             background: linear-gradient(145deg, #1a1a25, #151520);
             border: 2px solid #252530;
             font-size: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .mines-cell:hover:not(.opened):not(.mine) {
-            background: #252530;
-            border-color: #ffa726;
+            transition: all 0.2s ease;
         }
 
         .mines-cell.opened {
@@ -346,25 +352,17 @@
 
         @keyframes boom {
             0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
+            50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
 
+        /* НАСТРОЙКИ ИГР */
         .game-settings {
             background: #15151e;
             border-radius: 16px;
             padding: 20px;
             margin: 20px 0;
             border: 1px solid #252530;
-        }
-
-        .settings-title {
-            font-size: 16px;
-            margin-bottom: 15px;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .settings-row {
@@ -377,14 +375,17 @@
         }
 
         .settings-row:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
             border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
         }
 
         .settings-label {
             font-size: 14px;
             opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .settings-value {
@@ -410,8 +411,15 @@
             justify-content: center;
             cursor: pointer;
             font-size: 18px;
+            transition: all 0.2s ease;
         }
 
+        .control-btn:active {
+            transform: scale(0.9);
+            background: #252530;
+        }
+
+        /* СТАВКА */
         .bet-section {
             background: #15151e;
             border-radius: 16px;
@@ -426,6 +434,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            color: #ffa726;
         }
 
         .bet-amount {
@@ -434,13 +443,13 @@
             font-weight: 700;
             color: #ffa726;
             margin: 15px 0;
+            text-shadow: 0 0 10px rgba(255, 167, 38, 0.3);
         }
 
         .bet-controls {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
-            margin-top: 15px;
         }
 
         .bet-btn {
@@ -450,12 +459,22 @@
             padding: 12px 5px;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
             font-size: 14px;
+            transition: all 0.2s ease;
         }
 
-        .bet-btn:hover {
+        .bet-btn:active {
             background: #252530;
+            transform: scale(0.95);
+        }
+
+        .bet-btn.special {
+            grid-column: span 4;
+            margin-top: 5px;
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            border: none;
+            color: white;
+            font-weight: bold;
         }
 
         .action-buttons {
@@ -472,23 +491,22 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+
+        .btn:active {
+            transform: translateY(-2px);
         }
 
         .btn-primary {
             background: linear-gradient(135deg, #ff6b6b, #ffa726);
             color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
         }
 
         .btn-secondary {
@@ -497,15 +515,11 @@
             border: 2px solid #2a2a35;
         }
 
-        .btn-secondary:hover {
-            background: #252530;
-            transform: translateY(-3px);
-        }
-
+        /* ========== РАКЕТКА - ИСПРАВЛЕНА ========== */
         .rocket-container {
             position: relative;
             width: 100%;
-            height: 300px;
+            height: 280px;
             background: linear-gradient(to bottom, #0a0a0f, #1a1a25);
             border-radius: 16px;
             overflow: hidden;
@@ -519,9 +533,9 @@
             bottom: 30px;
             transform: translateX(-50%);
             transition: bottom 0.1s linear;
-            z-index: 10;
             font-size: 60px;
-            text-align: center;
+            z-index: 10;
+            filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5));
         }
 
         .rocket-fire {
@@ -531,13 +545,13 @@
             transform: translateX(-50%);
             font-size: 40px;
             color: #ff6b6b;
-            filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.7));
-            animation: firePulse 0.3s infinite alternate;
+            filter: drop-shadow(0 0 15px rgba(255, 107, 107, 0.8));
+            animation: firePulse 0.2s infinite alternate;
         }
 
         @keyframes firePulse {
             0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-            100% { transform: translateX(-50%) scale(1.1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.2); opacity: 1; }
         }
 
         .rocket-stats {
@@ -559,11 +573,99 @@
         .multiplier-progress {
             height: 100%;
             background: linear-gradient(90deg, #26c281, #ffa726, #ff6b6b);
-            border-radius: 4px;
             transition: width 0.2s ease;
             width: 0%;
+            border-radius: 4px;
         }
 
+        /* ========== КЛИКЕР ========== */
+        .clicker-container {
+            background: #15151e;
+            border-radius: 24px;
+            padding: 25px;
+            margin-top: 15px;
+            border: 1px solid #252530;
+            text-align: center;
+        }
+
+        .clicker-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: #ffa726;
+        }
+
+        .clicker-button {
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle at 30% 30%, #ff6b6b, #ffa726);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px auto;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            border: 4px solid #252530;
+            box-shadow: 0 0 40px rgba(255, 107, 107, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        .clicker-button:active {
+            transform: scale(0.85);
+        }
+
+        .clicker-button i {
+            font-size: 70px;
+            color: white;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(255, 107, 107, 0.5); }
+            50% { box-shadow: 0 0 70px rgba(255, 167, 38, 0.8); }
+            100% { box-shadow: 0 0 30px rgba(255, 107, 107, 0.5); }
+        }
+
+        .clicker-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0 20px;
+        }
+
+        .clicker-stat-item {
+            background: #1e1e29;
+            padding: 15px;
+            border-radius: 16px;
+            min-width: 120px;
+            border: 1px solid #252530;
+        }
+
+        .clicker-stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffa726;
+            margin-bottom: 5px;
+        }
+
+        .clicker-stat-label {
+            font-size: 11px;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        .exchange-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ffa726);
+            border: none;
+            padding: 16px;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* МОДАЛКИ */
         .modal {
             position: fixed;
             top: 0;
@@ -580,6 +682,12 @@
 
         .modal.active {
             display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
         }
 
         .modal-content {
@@ -590,7 +698,6 @@
             width: 100%;
             border: 2px solid #252530;
             text-align: center;
-            position: relative;
         }
 
         .modal-icon {
@@ -613,19 +720,16 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .modal-text {
-            font-size: 16px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
+        /* АДАПТАЦИЯ */
         @media (max-width: 360px) {
             .mines-cell { width: 40px; height: 40px; font-size: 18px; }
-            .rocket-container { height: 280px; }
-            .game-icon { width: 50px; height: 50px; font-size: 24px; }
             .rocket { font-size: 50px; }
             .rocket-fire { font-size: 30px; }
+            .clicker-button { width: 140px; height: 140px; }
+            .clicker-button i { font-size: 60px; }
+            .game-stats { gap: 15px; padding: 8px 15px; }
+            .game-stat { min-width: 70px; }
+            .game-stat-value { font-size: 20px; }
         }
 
         @media (min-width: 768px) {
@@ -635,118 +739,154 @@
     </style>
 </head>
 <body>
+    <!-- НИЖНЕЕ МЕНЮ - 3 КНОПКИ -->
     <div class="bottom-menu">
         <div class="menu-item active" onclick="showScreen('games-screen')">
             <i class="fas fa-gamepad"></i>
-            <span>Игры</span>
+            <span>ИГРЫ</span>
+        </div>
+        <div class="menu-item" onclick="showScreen('clicker-screen')">
+            <i class="fas fa-hand-pointer"></i>
+            <span>ТАПАЛКА</span>
+            <span class="coin-badge" id="menu-coin">0</span>
         </div>
         <div class="menu-item" onclick="showScreen('profile-screen')">
             <i class="fas fa-user"></i>
-            <span>Профиль</span>
+            <span>ПРОФИЛЬ</span>
         </div>
     </div>
 
+    <!-- ЭКРАН ИГР -->
     <div class="screen active" id="games-screen">
         <div class="games-header">
             <h2>🔥 SPOT GAMES</h2>
-            <p>Выберите игру для запуска</p>
+            <p>Выбери игру и рискуй!</p>
         </div>
-
         <div class="games-list">
             <div class="game-item" onclick="openGame('mines')">
                 <div class="game-icon">💣</div>
                 <div class="game-info">
                     <div class="game-title">🔥 МИНЫ</div>
                     <div class="game-desc">Чем больше мин = тем выше множитель! 3x3, 5x5, 6x6</div>
-                    <div class="game-badge">ПОПУЛЯРНОЕ</div>
+                    <div class="game-badge">ТОП</div>
                 </div>
-                <div class="game-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
+                <div class="game-arrow"><i class="fas fa-chevron-right"></i></div>
             </div>
-
             <div class="game-item" onclick="openGame('rocket')">
                 <div class="game-icon">🚀</div>
                 <div class="game-info">
                     <div class="game-title">🔥 РАКЕТКА</div>
-                    <div class="game-desc">Сложная игра! Забирай деньги до взрыва!</div>
-                    <div class="game-badge">СЛОЖНО</div>
+                    <div class="game-desc">Забери деньги до взрыва! Редко, но метко</div>
+                    <div class="game-badge">ХАРД</div>
                 </div>
-                <div class="game-arrow">
-                    <i class="fas fa-chevron-right"></i>
-                </div>
+                <div class="game-arrow"><i class="fas fa-chevron-right"></i></div>
             </div>
-
             <div class="game-item" onclick="showComingSoon()">
                 <div class="game-icon">🎲</div>
                 <div class="game-info">
                     <div class="game-title">РУЛЕТКА</div>
-                    <div class="game-desc">В разработке...</div>
+                    <div class="game-desc">Скоро...</div>
                 </div>
-                <div class="game-arrow">
-                    <i class="fas fa-clock"></i>
-                </div>
+                <div class="game-arrow"><i class="fas fa-clock"></i></div>
             </div>
         </div>
     </div>
 
+    <!-- ЭКРАН ПРОФИЛЯ -->
     <div class="screen" id="profile-screen">
         <div class="profile-header">
-            <div class="user-avatar">
+            <div class="user-avatar" id="telegram-avatar">
                 <i class="fas fa-user"></i>
             </div>
-            <h1>ПРОФИЛЬ</h1>
-            <p style="opacity: 0.8; font-size: 14px;">Ваша игровая статистика</p>
+            <h1 id="telegram-name">ПРОФИЛЬ</h1>
+            <p style="opacity: 0.8; font-size: 14px;" id="telegram-id">Загрузка...</p>
         </div>
-
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="value" id="profile-balance">1,000</div>
-                <div class="label">Баланс</div>
+                <div class="value" id="profile-balance">1000</div>
+                <div class="label">БАЛАНС</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="profile-wins">0</div>
-                <div class="label">Побед</div>
+                <div class="label">ПОБЕД</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="profile-bet">50</div>
-                <div class="label">Ставка</div>
+                <div class="label">СТАВКА</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="profile-games">0</div>
-                <div class="label">Игр сыграно</div>
+                <div class="label">ИГР</div>
             </div>
         </div>
-
         <div class="quick-actions">
             <div class="action-btn" onclick="openBetModal()">
                 <i class="fas fa-coins"></i>
                 <div class="text">
-                    <div class="title">Настройка ставки</div>
+                    <div class="title">НАСТРОЙКА СТАВКИ</div>
                     <div class="desc">Изменить размер ставки</div>
                 </div>
             </div>
             <div class="action-btn" onclick="showComingSoon()">
                 <i class="fas fa-trophy"></i>
                 <div class="text">
-                    <div class="title">Достижения</div>
+                    <div class="title">ДОСТИЖЕНИЯ</div>
                     <div class="desc">В разработке...</div>
                 </div>
             </div>
-            <div class="action-btn" onclick="showComingSoon()">
-                <i class="fas fa-history"></i>
-                <div class="text">
-                    <div class="title">История игр</div>
-                    <div class="desc">В разработке...</div>
-                </div>
-            </div>
-        </div>
-
-        <div style="margin-top: 30px; text-align: center; opacity: 0.7; font-size: 12px;">
-            Игрок #0001 • SPOT GAMES
         </div>
     </div>
 
+    <!-- ЭКРАН КЛИКЕРА (ТАПАЛКА) -->
+    <div class="screen" id="clicker-screen">
+        <div class="game-header">
+            <div class="back-btn" onclick="backToGames()">
+                <i class="fas fa-arrow-left"></i>
+            </div>
+            <div class="game-stats">
+                <div class="game-stat">
+                    <div class="game-stat-value" id="clicker-balance">1000</div>
+                    <div class="game-stat-label">БАЛАНС</div>
+                </div>
+                <div class="game-stat">
+                    <div class="game-stat-value" id="clicker-coins">0</div>
+                    <div class="game-stat-label">COIN</div>
+                </div>
+            </div>
+        </div>
+        <div class="clicker-container">
+            <div class="clicker-title">
+                <i class="fas fa-hand-pointer"></i> ТАПАЛКА
+            </div>
+            <div class="clicker-button" onclick="clickCoin()">
+                <i class="fas fa-coins"></i>
+            </div>
+            <div class="clicker-stats">
+                <div class="clicker-stat-item">
+                    <div class="clicker-stat-value" id="clicker-clicks">0</div>
+                    <div class="clicker-stat-label">ТАПОВ</div>
+                </div>
+                <div class="clicker-stat-item">
+                    <div class="clicker-stat-value" id="clicker-earned">0</div>
+                    <div class="clicker-stat-label">COIN</div>
+                </div>
+            </div>
+            <div style="background: #1e1e29; padding: 15px; border-radius: 12px; margin: 20px 0;">
+                <p style="color: #ffa726; font-weight: 600; margin-bottom: 5px;">⚡ 10 ТАПОВ = 1 COIN</p>
+                <p style="opacity: 0.7; font-size: 12px;">Минимальный обмен: 10 COIN</p>
+            </div>
+            <div class="action-buttons">
+                <button class="btn btn-primary exchange-btn" onclick="exchangeCoins()">
+                    <i class="fas fa-exchange-alt"></i> ОБМЕНЯТЬ
+                </button>
+                <button class="btn btn-secondary" onclick="resetClicks()">
+                    <i class="fas fa-redo"></i> СБРОС
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ЭКРАН МИНЫ - ПОЛНОСТЬЮ ИСПРАВЛЕН -->
     <div class="screen" id="mines-screen">
         <div class="game-header">
             <div class="back-btn" onclick="backToGames()">
@@ -755,18 +895,18 @@
             <div class="game-stats">
                 <div class="game-stat">
                     <div class="game-stat-value" id="mines-multiplier">1.00x</div>
-                    <div class="game-stat-label">Множитель</div>
+                    <div class="game-stat-label">МНОЖИТЕЛЬ</div>
                 </div>
                 <div class="game-stat">
                     <div class="game-stat-value" id="mines-win">50</div>
-                    <div class="game-stat-label">Выигрыш</div>
+                    <div class="game-stat-label">ВЫИГРЫШ</div>
                 </div>
             </div>
         </div>
 
         <div class="bet-section">
             <div class="bet-title">
-                <i class="fas fa-coins"></i> Ставка
+                <i class="fas fa-coins"></i> СТАВКА
             </div>
             <div class="bet-amount" id="mines-bet">50</div>
             <div class="bet-controls">
@@ -774,7 +914,7 @@
                 <div class="bet-btn" onclick="changeMinesBet(-5)">-5</div>
                 <div class="bet-btn" onclick="changeMinesBet(5)">+5</div>
                 <div class="bet-btn" onclick="changeMinesBet(10)">+10</div>
-                <div class="bet-btn" onclick="customMinesBet()" style="grid-column: span 4; margin-top: 5px; background: linear-gradient(135deg, #ff6b6b, #ffa726); border: none; color: white; font-weight: bold;">
+                <div class="bet-btn special" onclick="customMinesBet()">
                     ✏️ СВОЯ СТАВКА
                 </div>
             </div>
@@ -782,38 +922,24 @@
 
         <div class="game-settings">
             <div class="settings-row">
-                <div class="settings-label">Размер поля</div>
+                <div class="settings-label">🎲 РАЗМЕР ПОЛЯ</div>
                 <div class="settings-controls">
-                    <div class="control-btn" onclick="changeMinesField(-1)">
-                        <i class="fas fa-minus"></i>
-                    </div>
+                    <div class="control-btn" onclick="changeMinesField(-1)"><i class="fas fa-minus"></i></div>
                     <div class="settings-value" id="mines-field-size">3x3</div>
-                    <div class="control-btn" onclick="changeMinesField(1)">
-                        <i class="fas fa-plus"></i>
-                    </div>
+                    <div class="control-btn" onclick="changeMinesField(1)"><i class="fas fa-plus"></i></div>
                 </div>
             </div>
             <div class="settings-row">
-                <div class="settings-label">
-                    <i class="fas fa-bomb"></i> Количество мин
-                </div>
+                <div class="settings-label"><i class="fas fa-bomb"></i> КОЛИЧЕСТВО МИН</div>
                 <div class="settings-controls">
-                    <div class="control-btn" onclick="changeMinesBombs(-1)">
-                        <i class="fas fa-minus"></i>
-                    </div>
+                    <div class="control-btn" onclick="changeMinesBombs(-1)"><i class="fas fa-minus"></i></div>
                     <div class="settings-value" id="mines-bomb-count">1</div>
-                    <div class="control-btn" onclick="changeMinesBombs(1)">
-                        <i class="fas fa-plus"></i>
-                    </div>
+                    <div class="control-btn" onclick="changeMinesBombs(1)"><i class="fas fa-plus"></i></div>
                 </div>
             </div>
             <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #252530; text-align: center;">
-                <span style="color: #ffa726; font-weight: 600;" id="mines-bonus-info">
-                    🔥 +2% за мину
-                </span>
-                <span style="opacity: 0.7; display: block; font-size: 12px; margin-top: 5px;" id="mines-max-mult">
-                    Макс. множитель: 1.00x
-                </span>
+                <span style="color: #ffa726; font-weight: 600;" id="mines-bonus-info">🔥 +2% за мину</span>
+                <span style="opacity: 0.7; display: block; font-size: 12px; margin-top: 5px;" id="mines-max-mult">Макс: 1.00x</span>
             </div>
         </div>
 
@@ -821,14 +947,15 @@
 
         <div class="action-buttons">
             <button class="btn btn-primary" onclick="cashoutMines()" id="mines-cashout-btn">
-                <i class="fas fa-coins"></i> Забрать
+                <i class="fas fa-coins"></i> ЗАБРАТЬ
             </button>
             <button class="btn btn-secondary" onclick="startMinesGame()" id="mines-start-btn">
-                <i class="fas fa-play"></i> Новая игра
+                <i class="fas fa-play"></i> НОВАЯ
             </button>
         </div>
     </div>
 
+    <!-- ЭКРАН РАКЕТКА - ИСПРАВЛЕН -->
     <div class="screen" id="rocket-screen">
         <div class="game-header">
             <div class="back-btn" onclick="backToGames()">
@@ -837,18 +964,18 @@
             <div class="game-stats">
                 <div class="game-stat">
                     <div class="game-stat-value" id="rocket-multiplier">1.00x</div>
-                    <div class="game-stat-label">Множитель</div>
+                    <div class="game-stat-label">МНОЖИТЕЛЬ</div>
                 </div>
                 <div class="game-stat">
                     <div class="game-stat-value" id="rocket-win">50</div>
-                    <div class="game-stat-label">Выигрыш</div>
+                    <div class="game-stat-label">ВЫИГРЫШ</div>
                 </div>
             </div>
         </div>
 
         <div class="bet-section">
             <div class="bet-title">
-                <i class="fas fa-coins"></i> Ставка
+                <i class="fas fa-coins"></i> СТАВКА
             </div>
             <div class="bet-amount" id="rocket-bet">50</div>
             <div class="bet-controls">
@@ -856,7 +983,7 @@
                 <div class="bet-btn" onclick="changeRocketBet(-5)">-5</div>
                 <div class="bet-btn" onclick="changeRocketBet(5)">+5</div>
                 <div class="bet-btn" onclick="changeRocketBet(10)">+10</div>
-                <div class="bet-btn" onclick="customRocketBet()" style="grid-column: span 4; margin-top: 5px; background: linear-gradient(135deg, #ff6b6b, #ffa726); border: none; color: white; font-weight: bold;">
+                <div class="bet-btn special" onclick="customRocketBet()">
                     ✏️ СВОЯ СТАВКА
                 </div>
             </div>
@@ -865,11 +992,11 @@
         <div class="rocket-stats">
             <div class="stat-card">
                 <div class="value" id="rocket-height">0м</div>
-                <div class="label">Высота</div>
+                <div class="label">ВЫСОТА</div>
             </div>
             <div class="stat-card">
                 <div class="value" id="rocket-speed">0км/ч</div>
-                <div class="label">Скорость</div>
+                <div class="label">СКОРОСТЬ</div>
             </div>
         </div>
 
@@ -884,25 +1011,23 @@
 
         <div class="action-buttons">
             <button class="btn btn-primary" onclick="cashoutRocket()" id="rocket-cashout-btn">
-                <i class="fas fa-coins"></i> Забрать
+                <i class="fas fa-coins"></i> ЗАБРАТЬ
             </button>
             <button class="btn btn-secondary" onclick="startRocketFlight()" id="rocket-start-btn">
-                <i class="fas fa-rocket"></i> Запустить
+                <i class="fas fa-rocket"></i> ЗАПУСК
             </button>
         </div>
     </div>
 
+    <!-- МОДАЛКИ -->
     <div class="modal" id="win-modal">
         <div class="modal-content">
             <div class="modal-icon">🎉</div>
             <div class="modal-title">ПОБЕДА!</div>
-            <div class="modal-text">
-                Вы выиграли <span id="win-amount">0</span> монет!<br>
-                Множитель: <span id="win-mult">1.00x</span>
-            </div>
+            <div class="modal-text" id="win-text" style="font-size: 16px; margin-bottom: 30px;"></div>
             <div class="action-buttons">
-                <button class="btn btn-secondary" onclick="closeModal()">В меню</button>
-                <button class="btn btn-primary" onclick="closeModalAndNewGame()">Играть еще</button>
+                <button class="btn btn-secondary" onclick="closeModal()">В МЕНЮ</button>
+                <button class="btn btn-primary" onclick="closeModalAndNewGame()">ЕЩЁ</button>
             </div>
         </div>
     </div>
@@ -911,26 +1036,18 @@
         <div class="modal-content">
             <div class="modal-icon">💥</div>
             <div class="modal-title">ПОРАЖЕНИЕ!</div>
-            <div class="modal-text">
-                Ставка <span id="lose-bet">50</span> потеряна<br>
-                <span id="lose-reason">Попробуйте снова!</span>
-            </div>
+            <div class="modal-text" id="lose-text" style="font-size: 16px; margin-bottom: 30px;"></div>
             <div class="action-buttons">
-                <button class="btn btn-secondary" onclick="closeModal()">В меню</button>
-                <button class="btn btn-primary" onclick="closeModalAndNewGame()">Новая игра</button>
+                <button class="btn btn-secondary" onclick="closeModal()">В МЕНЮ</button>
+                <button class="btn btn-primary" onclick="closeModalAndNewGame()">ЕЩЁ</button>
             </div>
         </div>
     </div>
 
     <div class="modal" id="bet-modal">
         <div class="modal-content">
-            <div class="modal-title">
-                <i class="fas fa-coins"></i> Настройка ставки
-            </div>
-            <div class="modal-text">
-                Ваш баланс: <span id="modal-balance">1,000</span> монет<br>
-                Выберите сумму ставки:
-            </div>
+            <div class="modal-title"><i class="fas fa-coins"></i> СТАВКА</div>
+            <div class="modal-text">Баланс: <span id="modal-balance">1000</span> монет</div>
             <div class="bet-controls" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="bet-btn" onclick="selectBet(10)">10</div>
                 <div class="bet-btn" onclick="selectBet(50)">50</div>
@@ -939,19 +1056,27 @@
                 <div class="bet-btn" onclick="selectBet(500)">500</div>
                 <div class="bet-btn" onclick="selectBet(1000)">1000</div>
             </div>
-            <div class="action-buttons" style="margin-top: 20px;">
-                <button class="btn btn-secondary" onclick="closeModal()">Отмена</button>
-                <button class="btn btn-primary" onclick="applyBet()">Применить</button>
+            <div class="action-buttons">
+                <button class="btn btn-secondary" onclick="closeModal()">ОТМЕНА</button>
+                <button class="btn btn-primary" onclick="applyBet()">ПРИМЕНИТЬ</button>
             </div>
         </div>
     </div>
 
     <script>
+        // ========== СОСТОЯНИЕ ==========
         let gameState = {
+            userId: null,
             balance: 1000,
             bet: 50,
             wins: 0,
             gamesPlayed: 0,
+            
+            clicker: {
+                taps: 0,
+                coins: 0,
+                rate: 10
+            },
             
             mines: {
                 fieldSize: 3,
@@ -980,48 +1105,116 @@
 
         const fieldSizes = [3, 5, 6];
 
+        // ========== ПОЛНОЭКРАННЫЙ РЕЖИМ ДЛЯ TG ==========
+        function setupTelegram() {
+            if (window.Telegram?.WebApp) {
+                Telegram.WebApp.expand();
+                Telegram.WebApp.setHeaderColor('#0a0a0f');
+                Telegram.WebApp.setBackgroundColor('#0a0a0f');
+                Telegram.WebApp.enableClosingConfirmation();
+                document.body.classList.add('tg-fullscreen');
+            }
+        }
+
+        // ========== TELEGRAM USER ==========
+        function loadTelegramUser() {
+            if (window.Telegram?.WebApp?.initDataUnsafe?.user) {
+                const user = Telegram.WebApp.initDataUnsafe.user;
+                gameState.userId = user.id;
+                document.getElementById('telegram-name').innerHTML = user.first_name || 'ИГРОК';
+                document.getElementById('telegram-id').innerHTML = `👤 ID: ${user.id}`;
+                if (user.photo_url) {
+                    const avatar = document.getElementById('telegram-avatar');
+                    avatar.innerHTML = '';
+                    avatar.style.background = `url(${user.photo_url}) center/cover`;
+                }
+            } else {
+                document.getElementById('telegram-name').innerHTML = 'ТЕСТОВЫЙ ИГРОК';
+                document.getElementById('telegram-id').innerHTML = '👤 ID: 123456789';
+                gameState.userId = 123456789;
+            }
+            loadTelegramData();
+        }
+
+        // ========== TELEGRAM CLOUD STORAGE ==========
+        function loadTelegramData() {
+            if (window.Telegram?.WebApp?.CloudStorage) {
+                Telegram.WebApp.CloudStorage.getItem(`balance_${gameState.userId}`, (e, val) => {
+                    if (val) gameState.balance = parseInt(val);
+                    updateProfileUI();
+                    updateClickerUI();
+                });
+                Telegram.WebApp.CloudStorage.getItem(`wins_${gameState.userId}`, (e, val) => {
+                    if (val) gameState.wins = parseInt(val);
+                });
+                Telegram.WebApp.CloudStorage.getItem(`games_${gameState.userId}`, (e, val) => {
+                    if (val) gameState.gamesPlayed = parseInt(val);
+                });
+                Telegram.WebApp.CloudStorage.getItem(`bet_${gameState.userId}`, (e, val) => {
+                    if (val) gameState.bet = parseInt(val);
+                });
+                Telegram.WebApp.CloudStorage.getItem(`taps_${gameState.userId}`, (e, val) => {
+                    if (val) gameState.clicker.taps = parseInt(val);
+                    gameState.clicker.coins = Math.floor(gameState.clicker.taps / gameState.clicker.rate);
+                    updateClickerUI();
+                });
+            }
+        }
+
+        function saveTelegramData() {
+            if (window.Telegram?.WebApp?.CloudStorage && gameState.userId) {
+                Telegram.WebApp.CloudStorage.setItem(`balance_${gameState.userId}`, String(gameState.balance));
+                Telegram.WebApp.CloudStorage.setItem(`wins_${gameState.userId}`, String(gameState.wins));
+                Telegram.WebApp.CloudStorage.setItem(`games_${gameState.userId}`, String(gameState.gamesPlayed));
+                Telegram.WebApp.CloudStorage.setItem(`bet_${gameState.userId}`, String(gameState.bet));
+                Telegram.WebApp.CloudStorage.setItem(`taps_${gameState.userId}`, String(gameState.clicker.taps));
+            }
+        }
+
+        // ========== НАВИГАЦИЯ ==========
         function showScreen(screenId) {
-            document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
             
             if (screenId === 'games-screen') document.querySelector('.menu-item:nth-child(1)').classList.add('active');
-            if (screenId === 'profile-screen') {
+            if (screenId === 'clicker-screen') {
                 document.querySelector('.menu-item:nth-child(2)').classList.add('active');
+                updateClickerUI();
+            }
+            if (screenId === 'profile-screen') {
+                document.querySelector('.menu-item:nth-child(3)').classList.add('active');
                 updateProfileUI();
             }
+            if (screenId === 'mines-screen') initMinesGame();
+            if (screenId === 'rocket-screen') initRocketGame();
         }
 
         function openGame(gameType) {
-            if (gameType === 'mines') {
-                showScreen('mines-screen');
-                initMinesGame();
-            } else if (gameType === 'rocket') {
-                showScreen('rocket-screen');
-                initRocketGame();
-            }
+            if (gameType === 'mines') showScreen('mines-screen');
+            if (gameType === 'rocket') showScreen('rocket-screen');
         }
 
         function backToGames() { showScreen('games-screen'); }
-        function showComingSoon() { alert('В разработке!'); }
+        function showComingSoon() { alert('🔥 В разработке!'); }
 
+        // ========== ПРОФИЛЬ ==========
         function updateProfileUI() {
             document.getElementById('profile-balance').textContent = gameState.balance;
             document.getElementById('profile-wins').textContent = gameState.wins;
             document.getElementById('profile-bet').textContent = gameState.bet;
             document.getElementById('profile-games').textContent = gameState.gamesPlayed;
+            document.getElementById('modal-balance').textContent = gameState.balance;
+            saveTelegramData();
         }
 
+        // ========== МОДАЛКИ ==========
         function showModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); }
-
-        function openBetModal() {
-            document.getElementById('modal-balance').textContent = gameState.balance;
-            showModal('bet-modal');
-        }
+        function openBetModal() { showModal('bet-modal'); }
 
         function selectBet(amount) {
-            if (amount > gameState.balance) { alert('Недостаточно средств!'); return; }
+            if (amount > gameState.balance) { alert('❌ Недостаточно средств!'); return; }
             gameState.selectedBet = amount;
             document.querySelectorAll('#bet-modal .bet-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('#bet-modal .bet-btn').forEach(btn => {
@@ -1037,15 +1230,60 @@
             }
         }
 
+        // ========== КЛИКЕР ==========
+        function clickCoin() {
+            gameState.clicker.taps++;
+            gameState.clicker.coins = Math.floor(gameState.clicker.taps / gameState.clicker.rate);
+            updateClickerUI();
+            saveTelegramData();
+            
+            const btn = document.querySelector('.clicker-button');
+            btn.style.transform = 'scale(0.85)';
+            setTimeout(() => btn.style.transform = 'scale(1)', 100);
+        }
+
+        function updateClickerUI() {
+            gameState.clicker.coins = Math.floor(gameState.clicker.taps / gameState.clicker.rate);
+            document.getElementById('clicker-balance').textContent = gameState.balance;
+            document.getElementById('clicker-coins').textContent = gameState.clicker.coins;
+            document.getElementById('clicker-clicks').textContent = gameState.clicker.taps;
+            document.getElementById('clicker-earned').textContent = gameState.clicker.coins;
+            document.getElementById('menu-coin').textContent = gameState.clicker.coins;
+        }
+
+        function exchangeCoins() {
+            if (gameState.clicker.coins < 10) {
+                alert(`❌ Минимум 10 COIN! У тебя: ${gameState.clicker.coins}`);
+                return;
+            }
+            gameState.balance += gameState.clicker.coins;
+            alert(`✅ Обменяно ${gameState.clicker.coins} COIN! Баланс: ${gameState.balance} монет`);
+            gameState.clicker.taps = 0;
+            gameState.clicker.coins = 0;
+            updateClickerUI();
+            updateProfileUI();
+            saveTelegramData();
+        }
+
+        function resetClicks() {
+            if (gameState.clicker.taps > 0 && confirm('Сбросить счётчик тапов?')) {
+                gameState.clicker.taps = 0;
+                gameState.clicker.coins = 0;
+                updateClickerUI();
+                saveTelegramData();
+            }
+        }
+
+        // ========== МИНЫ ==========
         function getMinesMultiplierStep() {
-            const baseMultiplier = { 3: 0.03, 5: 0.02, 6: 0.018 }[gameState.mines.fieldSize];
-            const mineBonus = gameState.mines.bombsCount * { 3: 0.02, 5: 0.015, 6: 0.012 }[gameState.mines.fieldSize];
-            return baseMultiplier + mineBonus;
+            const base = {3: 0.03, 5: 0.02, 6: 0.018}[gameState.mines.fieldSize];
+            const bonus = gameState.mines.bombsCount * {3: 0.02, 5: 0.015, 6: 0.012}[gameState.mines.fieldSize];
+            return base + bonus;
         }
 
         function getMaxPossibleMultiplier() {
-            const safeCells = gameState.mines.fieldSize * gameState.mines.fieldSize - gameState.mines.bombsCount;
-            return 1 + (getMinesMultiplierStep() * safeCells);
+            const safe = gameState.mines.fieldSize * gameState.mines.fieldSize - gameState.mines.bombsCount;
+            return 1 + (getMinesMultiplierStep() * safe);
         }
 
         function initMinesGame() {
@@ -1068,17 +1306,10 @@
         }
 
         function customMinesBet() {
-            const customAmount = prompt('💰 Введи свою ставку:', gameState.mines.currentBet);
-            if (customAmount === null) return;
-            const amount = parseInt(customAmount);
-            if (isNaN(amount) || amount < 10) {
-                alert('❌ Минимальная ставка: 10 монет!');
-                return;
-            }
-            if (amount > gameState.balance) {
-                alert('❌ Недостаточно средств! Баланс: ' + gameState.balance + ' монет');
-                return;
-            }
+            const amount = parseInt(prompt('💰 Твоя ставка:', gameState.mines.currentBet));
+            if (!amount) return;
+            if (amount < 10) { alert('❌ Минимум 10!'); return; }
+            if (amount > gameState.balance) { alert('❌ Не хватает!'); return; }
             gameState.mines.currentBet = amount;
             document.getElementById('mines-bet').textContent = amount;
             updateMinesUI();
@@ -1086,11 +1317,10 @@
 
         function changeMinesField(delta) {
             const sizes = [3, 5, 6];
-            const currentIndex = sizes.indexOf(gameState.mines.fieldSize);
-            let newIndex = currentIndex + delta;
-            if (newIndex >= 0 && newIndex < sizes.length) {
-                gameState.mines.fieldSize = sizes[newIndex];
-                const maxBombs = Math.max(1, Math.floor(gameState.mines.fieldSize * gameState.mines.fieldSize * 0.4));
+            const idx = sizes.indexOf(gameState.mines.fieldSize) + delta;
+            if (idx >= 0 && idx < sizes.length) {
+                gameState.mines.fieldSize = sizes[idx];
+                const maxBombs = Math.floor(gameState.mines.fieldSize * gameState.mines.fieldSize * 0.4);
                 if (gameState.mines.bombsCount < 1) gameState.mines.bombsCount = 1;
                 if (gameState.mines.bombsCount > maxBombs) gameState.mines.bombsCount = maxBombs;
                 document.getElementById('mines-field-size').textContent = `${gameState.mines.fieldSize}x${gameState.mines.fieldSize}`;
@@ -1101,9 +1331,9 @@
         }
 
         function changeMinesBombs(delta) {
-            const maxBombs = Math.max(0, gameState.mines.fieldSize * gameState.mines.fieldSize - 1);
+            const max = gameState.mines.fieldSize * gameState.mines.fieldSize - 1;
             const newCount = gameState.mines.bombsCount + delta;
-            if (newCount >= 1 && newCount <= maxBombs) {
+            if (newCount >= 1 && newCount <= max) {
                 gameState.mines.bombsCount = newCount;
                 document.getElementById('mines-bomb-count').textContent = newCount;
                 generateMinesField();
@@ -1115,17 +1345,17 @@
             const field = document.getElementById('mines-field');
             field.innerHTML = '';
             field.style.gridTemplateColumns = `repeat(${gameState.mines.fieldSize}, 45px)`;
-            const totalCells = gameState.mines.fieldSize * gameState.mines.fieldSize;
+            const total = gameState.mines.fieldSize * gameState.mines.fieldSize;
             gameState.mines.bombs = [];
             while (gameState.mines.bombs.length < gameState.mines.bombsCount) {
-                const bomb = Math.floor(Math.random() * totalCells);
-                if (!gameState.mines.bombs.includes(bomb)) gameState.mines.bombs.push(bomb);
+                const b = Math.floor(Math.random() * total);
+                if (!gameState.mines.bombs.includes(b)) gameState.mines.bombs.push(b);
             }
             gameState.mines.opened = [];
             gameState.mines.gameActive = false;
             gameState.mines.gameOver = false;
             gameState.mines.multiplier = 1.0;
-            for (let i = 0; i < totalCells; i++) {
+            for (let i = 0; i < total; i++) {
                 const cell = document.createElement('div');
                 cell.className = 'mines-cell';
                 cell.dataset.index = i;
@@ -1137,7 +1367,7 @@
 
         function startMinesGame() {
             if (gameState.mines.currentBet > gameState.balance) {
-                alert('❌ Недостаточно средств! Баланс: ' + gameState.balance + ' монет');
+                alert('❌ Недостаточно средств!');
                 return;
             }
             gameState.balance -= gameState.mines.currentBet;
@@ -1146,6 +1376,7 @@
             generateMinesField();
             gameState.mines.gameActive = true;
             updateMinesUI();
+            saveTelegramData();
         }
 
         function openMinesCell(index) {
@@ -1157,41 +1388,38 @@
                 cell.classList.add('mine');
                 gameState.mines.gameOver = true;
                 gameState.mines.gameActive = false;
-                showLoseModal('💥 Ты попал на мину! Потеряно ' + gameState.mines.currentBet + ' монет');
+                showLoseModal(`💥 Мина! -${gameState.mines.currentBet} монет`);
             } else {
                 cell.innerHTML = '✨';
                 cell.classList.add('opened');
                 gameState.mines.multiplier += getMinesMultiplierStep();
-                const safeCells = gameState.mines.fieldSize * gameState.mines.fieldSize - gameState.mines.bombsCount;
-                if (gameState.mines.opened.length === safeCells) cashoutMines();
+                const safe = gameState.mines.fieldSize * gameState.mines.fieldSize - gameState.mines.bombsCount;
+                if (gameState.mines.opened.length === safe) cashoutMines();
             }
             updateMinesUI();
         }
 
         function updateMinesUI() {
-            const potentialWin = Math.floor(gameState.mines.currentBet * gameState.mines.multiplier);
+            const win = Math.floor(gameState.mines.currentBet * gameState.mines.multiplier);
             const step = getMinesMultiplierStep();
-            const maxMult = getMaxPossibleMultiplier();
+            const max = getMaxPossibleMultiplier();
             document.getElementById('mines-multiplier').textContent = gameState.mines.multiplier.toFixed(2) + 'x';
-            document.getElementById('mines-win').textContent = potentialWin;
-            const bonusPercent = Math.round(step * 100);
-            const mineBonusPercent = gameState.mines.bombsCount * { 3: 2, 5: 1.5, 6: 1.2 }[gameState.mines.fieldSize];
-            document.getElementById('mines-bonus-info').innerHTML = `🔥 +${mineBonusPercent}% за мину • Всего +${bonusPercent}% за клетку`;
-            document.getElementById('mines-max-mult').innerHTML = `📈 Макс: ${maxMult.toFixed(2)}x • ${Math.floor(gameState.mines.currentBet * maxMult)} монет`;
-            const cashoutBtn = document.getElementById('mines-cashout-btn');
+            document.getElementById('mines-win').textContent = win;
+            const bonus = gameState.mines.bombsCount * {3: 2, 5: 1.5, 6: 1.2}[gameState.mines.fieldSize];
+            document.getElementById('mines-bonus-info').innerHTML = `🔥 +${bonus}% за мину • +${Math.round(step * 100)}% за клетку`;
+            document.getElementById('mines-max-mult').innerHTML = `📈 Макс: ${max.toFixed(2)}x • ${Math.floor(gameState.mines.currentBet * max)} монет`;
+            
+            const btn = document.getElementById('mines-cashout-btn');
             const startBtn = document.getElementById('mines-start-btn');
-            if (!gameState.mines.gameActive) {
-                cashoutBtn.innerHTML = '<i class="fas fa-coins"></i> Забрать';
-                cashoutBtn.style.opacity = '0.5';
-                startBtn.innerHTML = '<i class="fas fa-play"></i> Новая игра';
-            } else if (gameState.mines.gameOver) {
-                cashoutBtn.innerHTML = '<i class="fas fa-flag"></i> Конец';
-                cashoutBtn.style.opacity = '0.5';
-                startBtn.innerHTML = '<i class="fas fa-redo"></i> Новая игра';
+            
+            if (!gameState.mines.gameActive || gameState.mines.gameOver) {
+                btn.style.opacity = '0.5';
+                btn.innerHTML = '<i class="fas fa-coins"></i> ЗАБРАТЬ';
+                startBtn.innerHTML = '<i class="fas fa-play"></i> НОВАЯ';
             } else {
-                cashoutBtn.innerHTML = `<i class="fas fa-coins"></i> Забрать ${potentialWin}`;
-                cashoutBtn.style.opacity = '1';
-                startBtn.innerHTML = '<i class="fas fa-play"></i> Игра идет';
+                btn.style.opacity = '1';
+                btn.innerHTML = `<i class="fas fa-coins"></i> ЗАБРАТЬ ${win}`;
+                startBtn.innerHTML = '<i class="fas fa-stop"></i> СТОП';
             }
         }
 
@@ -1199,20 +1427,23 @@
             if (!gameState.mines.gameActive || gameState.mines.opened.length === 0) return;
             gameState.mines.gameActive = false;
             gameState.mines.gameOver = true;
-            const winAmount = Math.floor(gameState.mines.currentBet * gameState.mines.multiplier);
-            gameState.balance += winAmount;
+            const win = Math.floor(gameState.mines.currentBet * gameState.mines.multiplier);
+            gameState.balance += win;
             gameState.wins++;
             updateProfileUI();
-            showWinModal('💰 +' + winAmount + ' монет!', gameState.mines.multiplier.toFixed(2) + 'x');
-            gameState.mines.bombs.forEach(index => {
-                const cell = document.querySelector(`.mines-cell[data-index="${index}"]`);
+            showWinModal(`💰 +${win} монет!`, `${gameState.mines.multiplier.toFixed(2)}x`);
+            
+            gameState.mines.bombs.forEach(idx => {
+                const cell = document.querySelector(`.mines-cell[data-index="${idx}"]`);
                 if (cell && !cell.classList.contains('mine')) {
                     cell.innerHTML = '💣';
                     cell.style.background = 'linear-gradient(145deg, #e3342f, #c53030)';
                 }
             });
+            saveTelegramData();
         }
 
+        // ========== РАКЕТКА ==========
         function initRocketGame() {
             gameState.rocket.currentBet = gameState.bet;
             document.getElementById('rocket-bet').textContent = gameState.rocket.currentBet;
@@ -1229,17 +1460,10 @@
         }
 
         function customRocketBet() {
-            const customAmount = prompt('🚀 Введи свою ставку:', gameState.rocket.currentBet);
-            if (customAmount === null) return;
-            const amount = parseInt(customAmount);
-            if (isNaN(amount) || amount < 10) {
-                alert('❌ Минимальная ставка: 10 монет!');
-                return;
-            }
-            if (amount > gameState.balance) {
-                alert('❌ Недостаточно средств! Баланс: ' + gameState.balance + ' монет');
-                return;
-            }
+            const amount = parseInt(prompt('🚀 Твоя ставка:', gameState.rocket.currentBet));
+            if (!amount) return;
+            if (amount < 10) { alert('❌ Минимум 10!'); return; }
+            if (amount > gameState.balance) { alert('❌ Не хватает!'); return; }
             gameState.rocket.currentBet = amount;
             document.getElementById('rocket-bet').textContent = amount;
             updateRocketUI();
@@ -1261,22 +1485,25 @@
         }
 
         function startRocketFlight() {
-            if (gameState.rocket.gameOver || !gameState.rocket.gameActive) {
+            if (!gameState.rocket.gameActive || gameState.rocket.gameOver) {
                 if (gameState.rocket.currentBet > gameState.balance) {
-                    alert('❌ Недостаточно средств! Баланс: ' + gameState.balance + ' монет');
+                    alert('❌ Недостаточно средств!');
                     return;
                 }
                 gameState.balance -= gameState.rocket.currentBet;
                 gameState.gamesPlayed++;
                 updateProfileUI();
-                const rand = Math.random();
-                if (rand < 0.85) gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2;
-                else if (rand < 0.95) gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2;
+                
+                const r = Math.random();
+                if (r < 0.85) gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2;
+                else if (r < 0.95) gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2;
                 else gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 3;
+                
                 resetRocket();
                 gameState.rocket.gameActive = true;
                 gameState.rocket.flying = true;
                 gameState.rocket.flightInterval = setInterval(flyRocket, 100);
+                saveTelegramData();
             }
             updateRocketUI();
         }
@@ -1296,7 +1523,7 @@
             gameState.rocket.flying = false;
             gameState.rocket.gameOver = true;
             document.getElementById('rocket-fire').style.display = 'none';
-            showLoseModal('💥 Взрыв на ' + gameState.rocket.multiplier.toFixed(2) + 'x! Потеряно ' + gameState.rocket.currentBet + ' монет');
+            showLoseModal(`💥 Взрыв на ${gameState.rocket.multiplier.toFixed(2)}x! -${gameState.rocket.currentBet} монет`);
             if (gameState.rocket.flightInterval) clearInterval(gameState.rocket.flightInterval);
             updateRocketUI();
         }
@@ -1307,13 +1534,18 @@
             document.getElementById('rocket-height').textContent = Math.round(gameState.rocket.height) + 'м';
             document.getElementById('rocket-speed').textContent = Math.round(gameState.rocket.speed) + 'км/ч';
             document.getElementById('multiplier-progress').style.width = Math.min((gameState.rocket.multiplier / 8) * 100, 100) + '%';
-            const cashoutBtn = document.getElementById('rocket-cashout-btn');
+            
+            const btn = document.getElementById('rocket-cashout-btn');
+            const startBtn = document.getElementById('rocket-start-btn');
+            
             if (gameState.rocket.gameActive && gameState.rocket.height > 0) {
-                cashoutBtn.style.opacity = '1';
-                cashoutBtn.innerHTML = `<i class="fas fa-coins"></i> Забрать ${Math.floor(gameState.rocket.currentBet * gameState.rocket.multiplier)}`;
+                btn.style.opacity = '1';
+                btn.innerHTML = `<i class="fas fa-coins"></i> ЗАБРАТЬ ${Math.floor(gameState.rocket.currentBet * gameState.rocket.multiplier)}`;
+                startBtn.innerHTML = '<i class="fas fa-rocket"></i> ЛЕТИТ';
             } else {
-                cashoutBtn.style.opacity = '0.5';
-                cashoutBtn.innerHTML = '<i class="fas fa-coins"></i> Забрать';
+                btn.style.opacity = '0.5';
+                btn.innerHTML = '<i class="fas fa-coins"></i> ЗАБРАТЬ';
+                startBtn.innerHTML = '<i class="fas fa-rocket"></i> ЗАПУСК';
             }
         }
 
@@ -1323,21 +1555,22 @@
             gameState.rocket.gameActive = false;
             gameState.rocket.gameOver = true;
             if (gameState.rocket.flightInterval) clearInterval(gameState.rocket.flightInterval);
-            const winAmount = Math.floor(gameState.rocket.currentBet * gameState.rocket.multiplier);
-            gameState.balance += winAmount;
+            const win = Math.floor(gameState.rocket.currentBet * gameState.rocket.multiplier);
+            gameState.balance += win;
             gameState.wins++;
             updateProfileUI();
-            showWinModal('💰 +' + winAmount + ' монет!', gameState.rocket.multiplier.toFixed(2) + 'x • ' + Math.round(gameState.rocket.height) + 'м');
+            showWinModal(`💰 +${win} монет!`, `${gameState.rocket.multiplier.toFixed(2)}x • ${Math.round(gameState.rocket.height)}м`);
+            saveTelegramData();
         }
 
+        // ========== МОДАЛКИ РЕЗУЛЬТАТОВ ==========
         function showWinModal(text, mult) {
-            document.getElementById('win-amount').textContent = text.replace(/[^0-9]/g, '');
-            document.getElementById('win-mult').innerHTML = mult;
+            document.getElementById('win-text').innerHTML = `${text}<br><span style="opacity:0.8">Множитель: ${mult}</span>`;
             showModal('win-modal');
         }
 
         function showLoseModal(text) {
-            document.getElementById('lose-reason').textContent = text;
+            document.getElementById('lose-text').innerHTML = text;
             showModal('lose-modal');
         }
 
@@ -1348,15 +1581,13 @@
             if (current === 'rocket-screen') startRocketFlight();
         }
 
+        // ========== ИНИЦИАЛИЗАЦИЯ ==========
         document.addEventListener('DOMContentLoaded', () => {
-            updateProfileUI();
+            setupTelegram();
+            loadTelegramUser();
             initMinesGame();
             initRocketGame();
-            if (window.Telegram?.WebApp) {
-                Telegram.WebApp.expand();
-                Telegram.WebApp.setHeaderColor('#15151e');
-                Telegram.WebApp.setBackgroundColor('#15151e');
-            }
+            updateClickerUI();
         });
     </script>
 </body>

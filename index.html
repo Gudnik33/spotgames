@@ -670,7 +670,7 @@
                 <div class="game-icon">💣</div>
                 <div class="game-info">
                     <div class="game-title">🔥 МИНЫ</div>
-                    <div class="game-desc">Открывай клетки, избегай мин, собирай множитель</div>
+                    <div class="game-desc">Чем больше мин = тем выше множитель! Рискуй и выигрывай!</div>
                     <div class="game-badge">ПОПУЛЯРНОЕ</div>
                 </div>
                 <div class="game-arrow">
@@ -682,7 +682,7 @@
                 <div class="game-icon">🚀</div>
                 <div class="game-info">
                     <div class="game-title">🔥 РАКЕТКА</div>
-                    <div class="game-desc">Сложная игра! Запускай ракету и забирай до взрыва!</div>
+                    <div class="game-desc">Сложная игра! Забирай деньги до взрыва!</div>
                     <div class="game-badge">СЛОЖНО</div>
                 </div>
                 <div class="game-arrow">
@@ -817,7 +817,9 @@
                 </div>
             </div>
             <div class="settings-row">
-                <div class="settings-label">Количество мин</div>
+                <div class="settings-label">
+                    <i class="fas fa-bomb"></i> Количество мин
+                </div>
                 <div class="settings-controls">
                     <div class="control-btn" onclick="changeMinesBombs(-1)">
                         <i class="fas fa-minus"></i>
@@ -827,6 +829,14 @@
                         <i class="fas fa-plus"></i>
                     </div>
                 </div>
+            </div>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #252530; text-align: center;">
+                <span style="color: #ffa726; font-weight: 600;" id="mines-bonus-info">
+                    🔥 +2% за мину
+                </span>
+                <span style="opacity: 0.7; display: block; font-size: 12px; margin-top: 5px;" id="mines-max-mult">
+                    Макс. множитель: 1.00x
+                </span>
             </div>
         </div>
 
@@ -1088,7 +1098,30 @@
             }
         }
 
-        // ========== ИГРА "МИНЫ" ==========
+        // ========== ИГРА "МИНЫ" - С БОНУСОМ ЗА МИНЫ ==========
+        
+        function getMinesMultiplierStep() {
+            const baseMultiplier = {
+                3: 0.03,
+                5: 0.02,
+                7: 0.015
+            }[gameState.mines.fieldSize];
+            
+            const mineBonus = gameState.mines.bombsCount * {
+                3: 0.02,
+                5: 0.015,
+                7: 0.01
+            }[gameState.mines.fieldSize];
+            
+            return baseMultiplier + mineBonus;
+        }
+
+        function getMaxPossibleMultiplier() {
+            const safeCells = gameState.mines.fieldSize * gameState.mines.fieldSize - gameState.mines.bombsCount;
+            const step = getMinesMultiplierStep();
+            return 1 + (step * safeCells);
+        }
+
         function initMinesGame() {
             gameState.mines.currentBet = gameState.bet;
             document.getElementById('mines-bet').textContent = gameState.mines.currentBet;
@@ -1115,7 +1148,7 @@
             
             if (newIndex >= 0 && newIndex < sizes.length) {
                 gameState.mines.fieldSize = sizes[newIndex];
-                const maxBombs = Math.max(1, Math.floor(gameState.mines.fieldSize * gameState.mines.fieldSize * 0.3));
+                const maxBombs = Math.max(1, Math.floor(gameState.mines.fieldSize * gameState.mines.fieldSize * 0.4));
                 
                 if (gameState.mines.bombsCount > maxBombs) {
                     gameState.mines.bombsCount = maxBombs;
@@ -1136,6 +1169,7 @@
             if (newCount >= 0 && newCount <= maxBombs) {
                 gameState.mines.bombsCount = newCount;
                 document.getElementById('mines-bomb-count').textContent = newCount;
+                generateMinesField();
                 updateMinesUI();
             }
         }
@@ -1187,22 +1221,6 @@
             updateMinesUI();
         }
 
-        function getMinesMultiplierStep() {
-            const baseMultiplier = {
-                3: 0.05,
-                5: 0.03,
-                7: 0.02
-            }[gameState.mines.fieldSize];
-            
-            const bombPenalty = gameState.mines.bombsCount * {
-                3: 0.01,
-                5: 0.005,
-                7: 0.003
-            }[gameState.mines.fieldSize];
-            
-            return Math.max(0.01, baseMultiplier - bombPenalty);
-        }
-
         function openMinesCell(index) {
             if (!gameState.mines.gameActive || gameState.mines.gameOver || gameState.mines.opened.includes(index)) {
                 return;
@@ -1236,9 +1254,24 @@
 
         function updateMinesUI() {
             const potentialWin = Math.floor(gameState.mines.currentBet * gameState.mines.multiplier);
+            const step = getMinesMultiplierStep();
+            const maxMult = getMaxPossibleMultiplier();
             
             document.getElementById('mines-multiplier').textContent = gameState.mines.multiplier.toFixed(2) + 'x';
             document.getElementById('mines-win').textContent = potentialWin;
+            
+            const bonusPercent = Math.round(step * 100);
+            const mineBonusPercent = gameState.mines.bombsCount * {
+                3: 2,
+                5: 1.5,
+                7: 1
+            }[gameState.mines.fieldSize];
+            
+            document.getElementById('mines-bonus-info').innerHTML = 
+                `🔥 +${mineBonusPercent}% за мину • Всего +${bonusPercent}% за клетку`;
+            
+            document.getElementById('mines-max-mult').innerHTML = 
+                `📈 Макс. множитель: ${maxMult.toFixed(2)}x • Выигрыш: ${Math.floor(gameState.mines.currentBet * maxMult)}`;
             
             const cashoutBtn = document.getElementById('mines-cashout-btn');
             const startBtn = document.getElementById('mines-start-btn');
@@ -1334,14 +1367,13 @@
                 gameState.gamesPlayed++;
                 updateProfileUI();
                 
-                // СЛОЖНАЯ РАКЕТКА: 85% взрыв на 1-3x, 10% на 3-5x, 5% на 5-8x
                 const rand = Math.random();
                 if (rand < 0.85) {
-                    gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2; // 1-3x
+                    gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2;
                 } else if (rand < 0.95) {
-                    gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2; // 3-5x
+                    gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2;
                 } else {
-                    gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 3; // 5-8x
+                    gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 3;
                 }
                 
                 resetRocket();
@@ -1359,14 +1391,13 @@
                 gameState.gamesPlayed++;
                 updateProfileUI();
                 
-                // СЛОЖНАЯ РАКЕТКА: 85% взрыв на 1-3x, 10% на 3-5x, 5% на 5-8x
                 const rand = Math.random();
                 if (rand < 0.85) {
-                    gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2; // 1-3x
+                    gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2;
                 } else if (rand < 0.95) {
-                    gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2; // 3-5x
+                    gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2;
                 } else {
-                    gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 3; // 5-8x
+                    gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 3;
                 }
                 
                 gameState.rocket.gameActive = true;
@@ -1382,11 +1413,11 @@
                 return;
             }
             
-            const speedMultiplier = Math.max(1, gameState.rocket.multiplier / 60); // Еще медленнее
-            gameState.rocket.height += 3 * speedMultiplier; // Медленный подъем
-            gameState.rocket.speed = 80 + gameState.rocket.height * 1.0; // Медленная скорость
+            const speedMultiplier = Math.max(1, gameState.rocket.multiplier / 60);
+            gameState.rocket.height += 3 * speedMultiplier;
+            gameState.rocket.speed = 80 + gameState.rocket.height * 1.0;
             
-            const growthRate = 0.015 + (gameState.rocket.height / 8000); // Очень медленный рост
+            const growthRate = 0.015 + (gameState.rocket.height / 8000);
             gameState.rocket.multiplier += growthRate * speedMultiplier;
             
             const rocket = document.getElementById('rocket');

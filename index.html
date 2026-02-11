@@ -67,10 +67,6 @@
             letter-spacing: 0.5px;
         }
 
-        .menu-item:hover {
-            transform: translateY(-2px);
-        }
-
         /* Экраны */
         .screen {
             display: none;
@@ -96,10 +92,30 @@
 
         .games-header h2 {
             font-size: 32px;
-            background: linear-gradient(90deg, #ff6b6b, #ffa726);
+            background: linear-gradient(90deg, #ff6b6b, #ffa726, #26c281);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 8px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .games-header h2::before {
+            content: "🔥";
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+        }
+
+        .games-header h2::after {
+            content: "🔥";
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
         }
 
         .games-header p {
@@ -123,8 +139,6 @@
             border: 2px solid #252530;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
         }
 
         .game-item:hover {
@@ -153,6 +167,14 @@
             font-size: 18px;
             font-weight: 600;
             margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .fire-icon {
+            color: #ff6b6b;
+            font-size: 16px;
         }
 
         .game-desc {
@@ -184,11 +206,10 @@
 
         .profile-header h1 {
             font-size: 32px;
-            background: linear-gradient(90deg, #ff6b6b, #ffa726, #26c281);
+            background: linear-gradient(90deg, #ff6b6b, #ffa726);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .user-avatar {
@@ -350,14 +371,12 @@
 
         .mines-cell:hover:not(.opened):not(.mine) {
             background: #252530;
-            transform: translateY(-3px);
             border-color: #ffa726;
         }
 
         .mines-cell.opened {
             background: linear-gradient(145deg, #26c281, #20b073);
             border-color: #26c281;
-            transform: scale(0.95);
         }
 
         .mines-cell.mine {
@@ -435,10 +454,6 @@
             font-size: 18px;
         }
 
-        .control-btn:active {
-            transform: scale(0.95);
-        }
-
         /* Ставка в игре */
         .bet-section {
             background: #15151e;
@@ -484,11 +499,6 @@
 
         .bet-btn:hover {
             background: #252530;
-        }
-
-        .bet-btn.active {
-            background: linear-gradient(135deg, #ff6b6b, #ffa726);
-            border-color: #ff6b6b;
         }
 
         .action-buttons {
@@ -564,39 +574,110 @@
             left: 50%;
             bottom: 30px;
             transform: translateX(-50%);
-            transition: all 0.1s linear;
+            transition: bottom 0.1s linear;
             z-index: 10;
+            width: 80px;
+            height: 160px;
         }
 
         .rocket-body {
             position: relative;
-            width: 60px;
-            height: 120px;
-            background: linear-gradient(45deg, #ff6b6b, #ffa726);
-            border-radius: 30px 30px 15px 15px;
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+            width: 100%;
+            height: 100%;
+        }
+
+        .rocket-nose {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 60px solid #ff6b6b;
+        }
+
+        .rocket-middle {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(to bottom, #ff6b6b, #ffa726);
+            border-radius: 10px;
+        }
+
+        .rocket-window {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 30px;
+            background: #87CEEB;
+            border-radius: 50%;
+            border: 3px solid #0a0a0f;
+        }
+
+        .rocket-fins {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+        }
+
+        .rocket-fin {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background: linear-gradient(to bottom, #ff6b6b, #e3342f);
+            border-radius: 5px;
+        }
+
+        .fin-left {
+            left: -45px;
+            bottom: 0;
+            transform: rotate(-20deg);
+        }
+
+        .fin-right {
+            right: -45px;
+            bottom: 0;
+            transform: rotate(20deg);
         }
 
         .rocket-fire {
             position: absolute;
-            bottom: -40px;
+            bottom: -60px;
             left: 50%;
             transform: translateX(-50%);
-            width: 40px;
-            height: 60px;
+            width: 60px;
+            height: 80px;
             background: linear-gradient(to top, 
                 rgba(255, 107, 107, 0) 0%,
                 rgba(255, 107, 107, 0.8) 30%,
                 rgba(255, 167, 38, 1) 70%,
                 rgba(255, 167, 38, 1) 100%);
-            border-radius: 50%;
-            filter: blur(10px);
+            border-radius: 50% 50% 0 0;
+            filter: blur(15px);
             animation: fireBurn 0.2s infinite alternate;
         }
 
         @keyframes fireBurn {
-            0% { transform: translateX(-50%) scale(1); opacity: 0.8; }
-            100% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+            0% { 
+                transform: translateX(-50%) scale(1); 
+                opacity: 0.9; 
+                filter: blur(15px);
+            }
+            100% { 
+                transform: translateX(-50%) scale(1.1, 1.3); 
+                opacity: 1; 
+                filter: blur(12px);
+            }
         }
 
         .rocket-stats {
@@ -640,7 +721,6 @@
 
         .modal.active {
             display: flex;
-            animation: fadeIn 0.3s ease;
         }
 
         .modal-content {
@@ -652,8 +732,6 @@
             border: 2px solid #252530;
             text-align: center;
             position: relative;
-            max-height: 90vh;
-            overflow-y: auto;
         }
 
         .modal-icon {
@@ -688,6 +766,9 @@
             .mines-cell { width: 45px; height: 45px; font-size: 18px; }
             .rocket-container { height: 280px; }
             .game-icon { width: 50px; height: 50px; font-size: 24px; }
+            .rocket { width: 70px; height: 140px; }
+            .rocket-nose { border-left: 35px solid transparent; border-right: 35px solid transparent; border-bottom: 50px solid #ff6b6b; }
+            .rocket-middle { width: 70px; height: 70px; top: 50px; }
         }
 
         @media (min-width: 768px) {
@@ -697,7 +778,7 @@
     </style>
 </head>
 <body>
-    <!-- Нижнее меню (ИГРЫ первая, ПРОФИЛЬ вторая) -->
+    <!-- Нижнее меню -->
     <div class="bottom-menu">
         <div class="menu-item active" onclick="showScreen('games-screen')">
             <i class="fas fa-gamepad"></i>
@@ -712,7 +793,7 @@
     <!-- ЭКРАН ИГР -->
     <div class="screen active" id="games-screen">
         <div class="games-header">
-            <h2>SPOT GAMES</h2>
+            <h2>🔥 SPOT GAMES</h2>
             <p>Выберите игру для запуска</p>
         </div>
 
@@ -720,7 +801,9 @@
             <div class="game-item" onclick="openGame('mines')">
                 <div class="game-icon">💣</div>
                 <div class="game-info">
-                    <div class="game-title">МИНЫ</div>
+                    <div class="game-title">
+                        <span class="fire-icon">🔥</span> МИНЫ
+                    </div>
                     <div class="game-desc">Открывай клетки, избегай мин, собирай множитель</div>
                     <div class="game-badge">ПОПУЛЯРНОЕ</div>
                 </div>
@@ -732,9 +815,11 @@
             <div class="game-item" onclick="openGame('rocket')">
                 <div class="game-icon">🚀</div>
                 <div class="game-info">
-                    <div class="game-title">РАКЕТКА</div>
+                    <div class="game-title">
+                        <span class="fire-icon">🔥</span> РАКЕТКА
+                    </div>
                     <div class="game-desc">Запускай ракету, собирай множитель, забирай вовремя!</div>
-                    <div class="game-badge">АДРЕНАЛИН</div>
+                    <div class="game-badge">СЛОЖНО</div>
                 </div>
                 <div class="game-arrow">
                     <i class="fas fa-chevron-right"></i>
@@ -944,7 +1029,16 @@
         <div class="rocket-container" id="rocket-container">
             <div class="rocket-sky"></div>
             <div class="rocket" id="rocket">
-                <div class="rocket-body"></div>
+                <div class="rocket-body">
+                    <div class="rocket-nose"></div>
+                    <div class="rocket-middle">
+                        <div class="rocket-window"></div>
+                    </div>
+                    <div class="rocket-fins">
+                        <div class="rocket-fin fin-left"></div>
+                        <div class="rocket-fin fin-right"></div>
+                    </div>
+                </div>
                 <div class="rocket-fire" id="rocket-fire"></div>
             </div>
         </div>
@@ -1062,7 +1156,6 @@
 
         // ========== ОСНОВНЫЕ ФУНКЦИИ ==========
         function showScreen(screenId) {
-            // Обновляем активный пункт меню
             document.querySelectorAll('.menu-item').forEach(item => {
                 item.classList.remove('active');
             });
@@ -1073,11 +1166,9 @@
                 document.querySelector('.menu-item:nth-child(2)').classList.add('active');
             }
             
-            // Показываем экран
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
             
-            // Обновляем UI профиля если нужно
             if (screenId === 'profile-screen') {
                 updateProfileUI();
             }
@@ -1312,7 +1403,7 @@
             } else {
                 cashoutBtn.innerHTML = `<i class="fas fa-coins"></i> Забрать ${potentialWin}`;
                 cashoutBtn.style.opacity = '1';
-                startBtn.innerHTML = '<i class="fas fa-stop"></i> Стоп';
+                startBtn.innerHTML = '<i class="fas fa-play"></i> Игра идет';
             }
         }
 
@@ -1382,6 +1473,10 @@
         }
 
         function startRocketFlight() {
+            if (gameState.rocket.gameActive && gameState.rocket.flying) {
+                return; // Игра уже идет, нет паузы!
+            }
+            
             if (gameState.rocket.gameOver) {
                 // Новая игра
                 if (gameState.rocket.currentBet > gameState.balance) {
@@ -1393,53 +1488,45 @@
                 gameState.gamesPlayed++;
                 updateProfileUI();
                 
+                // СЛОЖНЕЕ: 80% взрыв на 1-3x, 15% на 3-5x, 5% на 5-10x
                 const rand = Math.random();
-                if (rand < 0.6) {
-                    gameState.rocket.explodeAtMultiplier = 10 + Math.random() * 10;
-                } else if (rand < 0.9) {
-                    gameState.rocket.explodeAtMultiplier = 20 + Math.random() * 10;
+                if (rand < 0.8) {
+                    gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2; // 1-3x
+                } else if (rand < 0.95) {
+                    gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2; // 3-5x
                 } else {
-                    gameState.rocket.explodeAtMultiplier = 30 + Math.random() * 10;
+                    gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 5; // 5-10x
                 }
                 
                 resetRocket();
                 gameState.rocket.gameActive = true;
                 gameState.rocket.flying = true;
                 
-                gameState.rocket.flightInterval = setInterval(flyRocket, 150);
-            } else if (gameState.rocket.flying) {
-                // Останавливаем
-                gameState.rocket.flying = false;
-                if (gameState.rocket.flightInterval) {
-                    clearInterval(gameState.rocket.flightInterval);
-                    gameState.rocket.flightInterval = null;
-                }
+                gameState.rocket.flightInterval = setInterval(flyRocket, 100);
             } else {
-                // Запускаем или продолжаем
-                if (!gameState.rocket.gameActive) {
-                    if (gameState.rocket.currentBet > gameState.balance) {
-                        alert('Недостаточно средств!');
-                        return;
-                    }
-                    
-                    gameState.balance -= gameState.rocket.currentBet;
-                    gameState.gamesPlayed++;
-                    updateProfileUI();
-                    
-                    const rand = Math.random();
-                    if (rand < 0.6) {
-                        gameState.rocket.explodeAtMultiplier = 10 + Math.random() * 10;
-                    } else if (rand < 0.9) {
-                        gameState.rocket.explodeAtMultiplier = 20 + Math.random() * 10;
-                    } else {
-                        gameState.rocket.explodeAtMultiplier = 30 + Math.random() * 10;
-                    }
-                    
-                    gameState.rocket.gameActive = true;
+                // Запуск новой игры
+                if (gameState.rocket.currentBet > gameState.balance) {
+                    alert('Недостаточно средств!');
+                    return;
                 }
                 
+                gameState.balance -= gameState.rocket.currentBet;
+                gameState.gamesPlayed++;
+                updateProfileUI();
+                
+                // СЛОЖНЕЕ: 80% взрыв на 1-3x, 15% на 3-5x, 5% на 5-10x
+                const rand = Math.random();
+                if (rand < 0.8) {
+                    gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2; // 1-3x
+                } else if (rand < 0.95) {
+                    gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2; // 3-5x
+                } else {
+                    gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 5; // 5-10x
+                }
+                
+                gameState.rocket.gameActive = true;
                 gameState.rocket.flying = true;
-                gameState.rocket.flightInterval = setInterval(flyRocket, 150);
+                gameState.rocket.flightInterval = setInterval(flyRocket, 100);
             }
             
             updateRocketUI();
@@ -1450,11 +1537,12 @@
                 return;
             }
             
-            const speedMultiplier = Math.max(1, gameState.rocket.multiplier / 30);
-            gameState.rocket.height += 6 * speedMultiplier;
-            gameState.rocket.speed = 150 + gameState.rocket.height * 1.5;
+            // МЕДЛЕННЫЙ РОСТ - СЛОЖНЕЕ
+            const speedMultiplier = Math.max(1, gameState.rocket.multiplier / 50);
+            gameState.rocket.height += 4 * speedMultiplier;
+            gameState.rocket.speed = 100 + gameState.rocket.height * 1.2;
             
-            const growthRate = 0.03 + (gameState.rocket.height / 3000);
+            const growthRate = 0.02 + (gameState.rocket.height / 5000);
             gameState.rocket.multiplier += growthRate * speedMultiplier;
             
             const rocket = document.getElementById('rocket');
@@ -1465,12 +1553,6 @@
             
             if (gameState.rocket.multiplier >= gameState.rocket.explodeAtMultiplier && !gameState.rocket.exploded) {
                 explodeRocket();
-                return;
-            }
-            
-            if (gameState.rocket.multiplier >= gameState.rocket.maxMultiplier && !gameState.rocket.exploded) {
-                gameState.rocket.flying = false;
-                cashoutRocket();
                 return;
             }
             
@@ -1520,11 +1602,11 @@
             } else if (gameState.rocket.flying) {
                 cashoutBtn.innerHTML = `<i class="fas fa-coins"></i> Забрать ${potentialWin}`;
                 cashoutBtn.style.opacity = '1';
-                startBtn.innerHTML = '<i class="fas fa-stop"></i> Стоп';
+                startBtn.innerHTML = '<i class="fas fa-rocket"></i> Летит...';
             } else {
                 cashoutBtn.innerHTML = '<i class="fas fa-coins"></i> Забрать';
                 cashoutBtn.style.opacity = gameState.rocket.height > 0 ? '1' : '0.5';
-                startBtn.innerHTML = '<i class="fas fa-play"></i> Продолжить';
+                startBtn.innerHTML = '<i class="fas fa-rocket"></i> Запустить';
             }
         }
 

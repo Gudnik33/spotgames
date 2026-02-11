@@ -309,7 +309,7 @@
             text-transform: uppercase;
         }
 
-        /* Поле мин */
+        /* Поле мин - УМЕНЬШЕНО ДО 45px */
         .mines-field {
             display: grid;
             gap: 8px;
@@ -320,8 +320,8 @@
         }
 
         .mines-cell {
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -632,7 +632,7 @@
 
         /* Адаптация */
         @media (max-width: 360px) {
-            .mines-cell { width: 45px; height: 45px; font-size: 18px; }
+            .mines-cell { width: 40px; height: 40px; font-size: 18px; }
             .rocket-container { height: 280px; }
             .game-icon { width: 50px; height: 50px; font-size: 24px; }
             .rocket { font-size: 50px; }
@@ -1015,6 +1015,9 @@
             }
         };
 
+        // ========== РАЗМЕРЫ ПОЛЕЙ - ТОЛЬКО 3,5,6 ==========
+        const fieldSizes = [3, 5, 6];
+
         // ========== ОСНОВНЫЕ ФУНКЦИИ ==========
         function showScreen(screenId) {
             document.querySelectorAll('.menu-item').forEach(item => {
@@ -1098,19 +1101,19 @@
             }
         }
 
-        // ========== ИГРА "МИНЫ" - С БОНУСОМ ЗА МИНЫ ==========
+        // ========== ИГРА "МИНЫ" - С 6x6 ==========
         
         function getMinesMultiplierStep() {
             const baseMultiplier = {
                 3: 0.03,
                 5: 0.02,
-                7: 0.015
+                6: 0.018  // 6x6 - 1.8% за клетку
             }[gameState.mines.fieldSize];
             
             const mineBonus = gameState.mines.bombsCount * {
                 3: 0.02,
                 5: 0.015,
-                7: 0.01
+                6: 0.012  // 6x6 - 1.2% за мину
             }[gameState.mines.fieldSize];
             
             return baseMultiplier + mineBonus;
@@ -1142,7 +1145,7 @@
         }
 
         function changeMinesField(delta) {
-            const sizes = [3, 5, 7];
+            const sizes = [3, 5, 6];  // ТОЛЬКО 3,5,6
             const currentIndex = sizes.indexOf(gameState.mines.fieldSize);
             let newIndex = currentIndex + delta;
             
@@ -1178,7 +1181,8 @@
             const field = document.getElementById('mines-field');
             field.innerHTML = '';
             
-            field.style.gridTemplateColumns = `repeat(${gameState.mines.fieldSize}, 50px)`;
+            // КЛЕТКИ 45px
+            field.style.gridTemplateColumns = `repeat(${gameState.mines.fieldSize}, 45px)`;
             
             const totalCells = gameState.mines.fieldSize * gameState.mines.fieldSize;
             
@@ -1264,7 +1268,7 @@
             const mineBonusPercent = gameState.mines.bombsCount * {
                 3: 2,
                 5: 1.5,
-                7: 1
+                6: 1.2  // 6x6 - 1.2% за мину
             }[gameState.mines.fieldSize];
             
             document.getElementById('mines-bonus-info').innerHTML = 

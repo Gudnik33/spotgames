@@ -66,6 +66,7 @@
             letter-spacing: 0.5px;
         }
 
+        /* Экраны */
         .screen {
             display: none;
             min-height: calc(100vh - 70px);
@@ -264,7 +265,7 @@
             opacity: 0.7;
         }
 
-        /* ЭКРАН МИНЫ - УМЕНЬШЕННЫЙ РАЗМЕР */
+        /* ЭКРАН МИНЫ */
         .game-header {
             display: flex;
             justify-content: space-between;
@@ -308,20 +309,20 @@
             text-transform: uppercase;
         }
 
-        /* ПОЛЕ МИН - КОМПАКТНОЕ */
+        /* Поле мин */
         .mines-field {
             display: grid;
-            gap: 6px;
-            margin: 15px auto;
+            gap: 8px;
+            margin: 20px auto;
             justify-content: center;
             max-width: 100%;
             overflow: hidden;
         }
 
         .mines-cell {
-            width: 45px;
-            height: 45px;
-            border-radius: 8px;
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -329,7 +330,7 @@
             transition: all 0.3s ease;
             background: linear-gradient(145deg, #1a1a25, #151520);
             border: 2px solid #252530;
-            font-size: 18px;
+            font-size: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
@@ -359,17 +360,26 @@
         .game-settings {
             background: #15151e;
             border-radius: 16px;
-            padding: 15px;
-            margin: 15px 0;
+            padding: 20px;
+            margin: 20px 0;
             border: 1px solid #252530;
+        }
+
+        .settings-title {
+            font-size: 16px;
+            margin-bottom: 15px;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .settings-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
             border-bottom: 1px solid #252530;
         }
 
@@ -393,34 +403,34 @@
         .settings-controls {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .control-btn {
             background: #1e1e29;
             border: 2px solid #2a2a35;
             border-radius: 8px;
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
         }
 
         /* Ставка в игре */
         .bet-section {
             background: #15151e;
             border-radius: 16px;
-            padding: 15px;
-            margin: 15px 0;
+            padding: 20px;
+            margin: 20px 0;
             border: 1px solid #252530;
         }
 
         .bet-title {
             font-size: 16px;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -428,49 +438,53 @@
 
         .bet-amount {
             text-align: center;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             color: #ffa726;
-            margin: 10px 0;
+            margin: 15px 0;
         }
 
         .bet-controls {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin-top: 10px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .bet-btn {
             background: #1e1e29;
             border: 2px solid #2a2a35;
-            border-radius: 8px;
-            padding: 10px 5px;
+            border-radius: 10px;
+            padding: 12px 5px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 14px;
         }
 
+        .bet-btn:hover {
+            background: #252530;
+        }
+
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 12px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .btn {
-            padding: 14px;
+            padding: 16px;
             border: none;
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -480,21 +494,31 @@
             color: white;
         }
 
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
         .btn-secondary {
             background: #1e1e29;
             color: white;
             border: 2px solid #2a2a35;
         }
 
+        .btn-secondary:hover {
+            background: #252530;
+            transform: translateY(-3px);
+        }
+
         /* ЭКРАН РАКЕТКА */
         .rocket-container {
             position: relative;
             width: 100%;
-            height: 280px;
+            height: 300px;
             background: linear-gradient(to bottom, #0a0a0f, #1a1a25);
             border-radius: 16px;
             overflow: hidden;
-            margin: 15px 0;
+            margin: 20px 0;
             border: 2px solid #252530;
         }
 
@@ -505,7 +529,7 @@
             transform: translateX(-50%);
             transition: bottom 0.1s linear;
             z-index: 10;
-            font-size: 50px;
+            font-size: 60px;
             text-align: center;
         }
 
@@ -514,7 +538,7 @@
             bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 35px;
+            font-size: 40px;
             color: #ff6b6b;
             filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.7));
             animation: firePulse 0.3s infinite alternate;
@@ -528,23 +552,23 @@
         .rocket-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 15px;
+            gap: 15px;
+            margin-bottom: 20px;
         }
 
         .multiplier-bar {
             width: 100%;
-            height: 6px;
+            height: 8px;
             background: #252530;
-            border-radius: 3px;
-            margin: 12px 0;
+            border-radius: 4px;
+            margin: 15px 0;
             overflow: hidden;
         }
 
         .multiplier-progress {
             height: 100%;
             background: linear-gradient(90deg, #26c281, #ffa726, #ff6b6b);
-            border-radius: 3px;
+            border-radius: 4px;
             transition: width 0.2s ease;
             width: 0%;
         }
@@ -571,16 +595,17 @@
         .modal-content {
             background: #15151e;
             border-radius: 20px;
-            padding: 25px;
-            max-width: 350px;
+            padding: 30px;
+            max-width: 400px;
             width: 100%;
             border: 2px solid #252530;
             text-align: center;
+            position: relative;
         }
 
         .modal-icon {
-            font-size: 50px;
-            margin-bottom: 20px;
+            font-size: 60px;
+            margin-bottom: 25px;
             animation: bounce 1s infinite;
         }
 
@@ -590,25 +615,33 @@
         }
 
         .modal-title {
-            font-size: 24px;
-            margin-bottom: 15px;
+            font-size: 26px;
+            margin-bottom: 20px;
             font-weight: 700;
             background: linear-gradient(90deg, #ff6b6b, #ffa726);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* Адаптация для маленьких экранов */
+        .modal-text {
+            font-size: 16px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* Адаптация */
         @media (max-width: 360px) {
-            .mines-cell { width: 40px; height: 40px; font-size: 16px; }
-            .rocket-container { height: 250px; }
-            .rocket { font-size: 45px; }
+            .mines-cell { width: 45px; height: 45px; font-size: 18px; }
+            .rocket-container { height: 280px; }
+            .game-icon { width: 50px; height: 50px; font-size: 24px; }
+            .rocket { font-size: 50px; }
             .rocket-fire { font-size: 30px; }
         }
 
         @media (min-width: 768px) {
-            body { max-width: 450px; margin: 0 auto; }
-            .bottom-menu { max-width: 450px; margin: 0 auto; }
+            body { max-width: 500px; margin: 0 auto; }
+            .bottom-menu { max-width: 500px; margin: 0 auto; }
         }
     </style>
 </head>
@@ -629,7 +662,7 @@
     <div class="screen active" id="games-screen">
         <div class="games-header">
             <h2>🔥 SPOT GAMES</h2>
-            <p>Выбери игру и рискуй!</p>
+            <p>Выберите игру для запуска</p>
         </div>
 
         <div class="games-list">
@@ -637,8 +670,8 @@
                 <div class="game-icon">💣</div>
                 <div class="game-info">
                     <div class="game-title">🔥 МИНЫ</div>
-                    <div class="game-desc">Чем больше мин = тем выше множитель! 3x3, 5x5, 6x6</div>
-                    <div class="game-badge">ТОП</div>
+                    <div class="game-desc">Чем больше мин = тем выше множитель! Рискуй и выигрывай!</div>
+                    <div class="game-badge">ПОПУЛЯРНОЕ</div>
                 </div>
                 <div class="game-arrow">
                     <i class="fas fa-chevron-right"></i>
@@ -649,8 +682,8 @@
                 <div class="game-icon">🚀</div>
                 <div class="game-info">
                     <div class="game-title">🔥 РАКЕТКА</div>
-                    <div class="game-desc">Запусти и забери деньги до взрыва! Сложная игра</div>
-                    <div class="game-badge">АДРЕНАЛИН</div>
+                    <div class="game-desc">Сложная игра! Забирай деньги до взрыва!</div>
+                    <div class="game-badge">СЛОЖНО</div>
                 </div>
                 <div class="game-arrow">
                     <i class="fas fa-chevron-right"></i>
@@ -661,7 +694,18 @@
                 <div class="game-icon">🎲</div>
                 <div class="game-info">
                     <div class="game-title">РУЛЕТКА</div>
-                    <div class="game-desc">Скоро...</div>
+                    <div class="game-desc">В разработке...</div>
+                </div>
+                <div class="game-arrow">
+                    <i class="fas fa-clock"></i>
+                </div>
+            </div>
+
+            <div class="game-item" onclick="showComingSoon()">
+                <div class="game-icon">🎯</div>
+                <div class="game-info">
+                    <div class="game-title">ДРУГОЕ</div>
+                    <div class="game-desc">В разработке...</div>
                 </div>
                 <div class="game-arrow">
                     <i class="fas fa-clock"></i>
@@ -677,11 +721,12 @@
                 <i class="fas fa-user"></i>
             </div>
             <h1>ПРОФИЛЬ</h1>
+            <p style="opacity: 0.8; font-size: 14px;">Ваша игровая статистика</p>
         </div>
 
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="value" id="profile-balance">1000</div>
+                <div class="value" id="profile-balance">1,000</div>
                 <div class="label">Баланс</div>
             </div>
             <div class="stat-card">
@@ -694,7 +739,7 @@
             </div>
             <div class="stat-card">
                 <div class="value" id="profile-games">0</div>
-                <div class="label">Игр</div>
+                <div class="label">Игр сыграно</div>
             </div>
         </div>
 
@@ -702,10 +747,28 @@
             <div class="action-btn" onclick="openBetModal()">
                 <i class="fas fa-coins"></i>
                 <div class="text">
-                    <div class="title">Изменить ставку</div>
-                    <div class="desc">Текущая: <span id="profile-bet-small">50</span> монет</div>
+                    <div class="title">Настройка ставки</div>
+                    <div class="desc">Изменить размер ставки</div>
                 </div>
             </div>
+            <div class="action-btn" onclick="showComingSoon()">
+                <i class="fas fa-trophy"></i>
+                <div class="text">
+                    <div class="title">Достижения</div>
+                    <div class="desc">В разработке...</div>
+                </div>
+            </div>
+            <div class="action-btn" onclick="showComingSoon()">
+                <i class="fas fa-history"></i>
+                <div class="text">
+                    <div class="title">История игр</div>
+                    <div class="desc">В разработке...</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center; opacity: 0.7; font-size: 12px;">
+            Игрок #0001 • SPOT GAMES
         </div>
     </div>
 
@@ -755,7 +818,7 @@
             </div>
             <div class="settings-row">
                 <div class="settings-label">
-                    <i class="fas fa-bomb"></i> Мины
+                    <i class="fas fa-bomb"></i> Количество мин
                 </div>
                 <div class="settings-controls">
                     <div class="control-btn" onclick="changeMinesBombs(-1)">
@@ -767,20 +830,26 @@
                     </div>
                 </div>
             </div>
-            <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #252530; text-align: center; font-size: 12px;">
-                <span style="color: #ffa726;" id="mines-bonus-info">🔥 +2% за мину</span>
-                <span style="opacity: 0.7; display: block; margin-top: 3px;" id="mines-max-mult"></span>
+            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #252530; text-align: center;">
+                <span style="color: #ffa726; font-weight: 600;" id="mines-bonus-info">
+                    🔥 +2% за мину
+                </span>
+                <span style="opacity: 0.7; display: block; font-size: 12px; margin-top: 5px;" id="mines-max-mult">
+                    Макс. множитель: 1.00x
+                </span>
             </div>
         </div>
 
-        <div class="mines-field" id="mines-field"></div>
+        <div class="mines-field" id="mines-field">
+            <!-- Поле мин генерируется тут -->
+        </div>
 
         <div class="action-buttons">
             <button class="btn btn-primary" onclick="cashoutMines()" id="mines-cashout-btn">
                 <i class="fas fa-coins"></i> Забрать
             </button>
             <button class="btn btn-secondary" onclick="startMinesGame()" id="mines-start-btn">
-                <i class="fas fa-play"></i> Старт
+                <i class="fas fa-play"></i> Новая игра
             </button>
         </div>
     </div>
@@ -828,7 +897,7 @@
         </div>
 
         <div class="multiplier-bar">
-            <div class="multiplier-progress" id="multiplier-progress"></div>
+            <div class="multiplier-progress" id="multiplier-progress" style="width: 0%"></div>
         </div>
 
         <div class="rocket-container" id="rocket-container">
@@ -841,7 +910,7 @@
                 <i class="fas fa-coins"></i> Забрать
             </button>
             <button class="btn btn-secondary" onclick="startRocketFlight()" id="rocket-start-btn">
-                <i class="fas fa-rocket"></i> Запуск
+                <i class="fas fa-rocket"></i> Запустить
             </button>
         </div>
     </div>
@@ -851,10 +920,17 @@
         <div class="modal-content">
             <div class="modal-icon">🎉</div>
             <div class="modal-title">ПОБЕДА!</div>
-            <div class="modal-text" id="win-text"></div>
+            <div class="modal-text">
+                Вы выиграли <span id="win-amount">0</span> монет!<br>
+                Множитель: <span id="win-mult">1.00x</span>
+            </div>
             <div class="action-buttons">
-                <button class="btn btn-secondary" onclick="closeModal()">В меню</button>
-                <button class="btn btn-primary" onclick="closeModalAndNewGame()">Еще</button>
+                <button class="btn btn-secondary" onclick="closeModal()">
+                    В меню
+                </button>
+                <button class="btn btn-primary" onclick="closeModalAndNewGame()">
+                    Играть еще
+                </button>
             </div>
         </div>
     </div>
@@ -863,19 +939,29 @@
         <div class="modal-content">
             <div class="modal-icon">💥</div>
             <div class="modal-title">ПОРАЖЕНИЕ!</div>
-            <div class="modal-text" id="lose-text"></div>
+            <div class="modal-text">
+                Ставка <span id="lose-bet">50</span> потеряна<br>
+                <span id="lose-reason">Попробуйте снова!</span>
+            </div>
             <div class="action-buttons">
-                <button class="btn btn-secondary" onclick="closeModal()">В меню</button>
-                <button class="btn btn-primary" onclick="closeModalAndNewGame()">Еще</button>
+                <button class="btn btn-secondary" onclick="closeModal()">
+                    В меню
+                </button>
+                <button class="btn btn-primary" onclick="closeModalAndNewGame()">
+                    Новая игра
+                </button>
             </div>
         </div>
     </div>
 
     <div class="modal" id="bet-modal">
         <div class="modal-content">
-            <div class="modal-title">💰 НАСТРОЙКА СТАВКИ</div>
+            <div class="modal-title">
+                <i class="fas fa-coins"></i> Настройка ставки
+            </div>
             <div class="modal-text">
-                Баланс: <span id="modal-balance">1000</span> монет
+                Ваш баланс: <span id="modal-balance">1,000</span> монет<br>
+                Выберите сумму ставки:
             </div>
             <div class="bet-controls" style="grid-template-columns: repeat(3, 1fr);">
                 <div class="bet-btn" onclick="selectBet(10)">10</div>
@@ -885,15 +971,19 @@
                 <div class="bet-btn" onclick="selectBet(500)">500</div>
                 <div class="bet-btn" onclick="selectBet(1000)">1000</div>
             </div>
-            <div class="action-buttons">
-                <button class="btn btn-secondary" onclick="closeModal()">Отмена</button>
-                <button class="btn btn-primary" onclick="applyBet()">Применить</button>
+            <div class="action-buttons" style="margin-top: 20px;">
+                <button class="btn btn-secondary" onclick="closeModal()">
+                    Отмена
+                </button>
+                <button class="btn btn-primary" onclick="applyBet()">
+                    Применить
+                </button>
             </div>
         </div>
     </div>
 
     <script>
-        // ========== СОСТОЯНИЕ ==========
+        // ========== СОСТОЯНИЕ ИГРЫ ==========
         let gameState = {
             balance: 1000,
             bet: 50,
@@ -925,18 +1015,22 @@
             }
         };
 
-        // ========== РАЗМЕРЫ ПОЛЕЙ ==========
-        const fieldSizes = [3, 5, 6]; // 7x7 заменен на 6x6
-
         // ========== ОСНОВНЫЕ ФУНКЦИИ ==========
         function showScreen(screenId) {
-            document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.menu-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (screenId === 'games-screen') {
+                document.querySelector('.menu-item:nth-child(1)').classList.add('active');
+            } else if (screenId === 'profile-screen') {
+                document.querySelector('.menu-item:nth-child(2)').classList.add('active');
+            }
+            
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
             document.getElementById(screenId).classList.add('active');
             
-            if (screenId === 'games-screen') document.querySelector('.menu-item:nth-child(1)').classList.add('active');
             if (screenId === 'profile-screen') {
-                document.querySelector('.menu-item:nth-child(2)').classList.add('active');
                 updateProfileUI();
             }
         }
@@ -951,20 +1045,29 @@
             }
         }
 
-        function backToGames() { showScreen('games-screen'); }
-        function showComingSoon() { alert('В разработке!'); }
+        function backToGames() {
+            showScreen('games-screen');
+        }
 
         function updateProfileUI() {
             document.getElementById('profile-balance').textContent = gameState.balance;
             document.getElementById('profile-wins').textContent = gameState.wins;
             document.getElementById('profile-bet').textContent = gameState.bet;
             document.getElementById('profile-games').textContent = gameState.gamesPlayed;
-            document.getElementById('profile-bet-small').textContent = gameState.bet;
         }
 
-        // ========== МОДАЛКИ ==========
-        function showModal(id) { document.getElementById(id).classList.add('active'); }
-        function closeModal() { document.querySelectorAll('.modal').forEach(m => m.classList.remove('active')); }
+        function showComingSoon() {
+            alert("Эта функция в разработке!");
+        }
+
+        // ========== МОДАЛЬНЫЕ ОКНА ==========
+        function showModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(m => m.classList.remove('active'));
+        }
 
         function openBetModal() {
             document.getElementById('modal-balance').textContent = gameState.balance;
@@ -972,12 +1075,19 @@
         }
 
         function selectBet(amount) {
-            if (amount > gameState.balance) { alert('Недостаточно средств!'); return; }
-            gameState.selectedBet = amount;
-            document.querySelectorAll('#bet-modal .bet-btn').forEach(btn => btn.classList.remove('active'));
+            if (amount > gameState.balance) {
+                alert('Недостаточно средств!');
+                return;
+            }
+            
             document.querySelectorAll('#bet-modal .bet-btn').forEach(btn => {
-                if (parseInt(btn.textContent) === amount) btn.classList.add('active');
+                btn.classList.remove('active');
+                if (parseInt(btn.textContent) === amount) {
+                    btn.classList.add('active');
+                }
             });
+            
+            gameState.selectedBet = amount;
         }
 
         function applyBet() {
@@ -988,21 +1098,28 @@
             }
         }
 
-        // ========== МИНЫ (С 6x6) ==========
+        // ========== ИГРА "МИНЫ" - С БОНУСОМ ЗА МИНЫ ==========
+        
         function getMinesMultiplierStep() {
             const baseMultiplier = {
-                3: 0.04,
-                5: 0.025,
-                6: 0.018  // 6x6 - 1.8% за клетку
+                3: 0.03,
+                5: 0.02,
+                7: 0.015
             }[gameState.mines.fieldSize];
             
             const mineBonus = gameState.mines.bombsCount * {
-                3: 0.025,
-                5: 0.018,
-                6: 0.012  // 6x6 - 1.2% за мину
+                3: 0.02,
+                5: 0.015,
+                7: 0.01
             }[gameState.mines.fieldSize];
             
             return baseMultiplier + mineBonus;
+        }
+
+        function getMaxPossibleMultiplier() {
+            const safeCells = gameState.mines.fieldSize * gameState.mines.fieldSize - gameState.mines.bombsCount;
+            const step = getMinesMultiplierStep();
+            return 1 + (step * safeCells);
         }
 
         function initMinesGame() {
@@ -1010,33 +1127,9 @@
             document.getElementById('mines-bet').textContent = gameState.mines.currentBet;
             document.getElementById('mines-field-size').textContent = `${gameState.mines.fieldSize}x${gameState.mines.fieldSize}`;
             document.getElementById('mines-bomb-count').textContent = gameState.mines.bombsCount;
+            
             generateMinesField();
             updateMinesUI();
-        }
-
-        function changeMinesField(delta) {
-            let index = fieldSizes.indexOf(gameState.mines.fieldSize);
-            index = Math.max(0, Math.min(fieldSizes.length - 1, index + delta));
-            gameState.mines.fieldSize = fieldSizes[index];
-            
-            const maxBombs = Math.floor(gameState.mines.fieldSize * gameState.mines.fieldSize * 0.4);
-            if (gameState.mines.bombsCount > maxBombs) gameState.mines.bombsCount = maxBombs;
-            
-            document.getElementById('mines-field-size').textContent = `${gameState.mines.fieldSize}x${gameState.mines.fieldSize}`;
-            document.getElementById('mines-bomb-count').textContent = gameState.mines.bombsCount;
-            generateMinesField();
-            updateMinesUI();
-        }
-
-        function changeMinesBombs(delta) {
-            const maxBombs = gameState.mines.fieldSize * gameState.mines.fieldSize - 1;
-            const newCount = gameState.mines.bombsCount + delta;
-            if (newCount >= 0 && newCount <= maxBombs) {
-                gameState.mines.bombsCount = newCount;
-                document.getElementById('mines-bomb-count').textContent = newCount;
-                generateMinesField();
-                updateMinesUI();
-            }
         }
 
         function changeMinesBet(delta) {
@@ -1048,17 +1141,53 @@
             }
         }
 
+        function changeMinesField(delta) {
+            const sizes = [3, 5, 7];
+            const currentIndex = sizes.indexOf(gameState.mines.fieldSize);
+            let newIndex = currentIndex + delta;
+            
+            if (newIndex >= 0 && newIndex < sizes.length) {
+                gameState.mines.fieldSize = sizes[newIndex];
+                const maxBombs = Math.max(1, Math.floor(gameState.mines.fieldSize * gameState.mines.fieldSize * 0.4));
+                
+                if (gameState.mines.bombsCount > maxBombs) {
+                    gameState.mines.bombsCount = maxBombs;
+                }
+                
+                document.getElementById('mines-field-size').textContent = `${gameState.mines.fieldSize}x${gameState.mines.fieldSize}`;
+                document.getElementById('mines-bomb-count').textContent = gameState.mines.bombsCount;
+                
+                generateMinesField();
+                updateMinesUI();
+            }
+        }
+
+        function changeMinesBombs(delta) {
+            const maxBombs = Math.max(0, gameState.mines.fieldSize * gameState.mines.fieldSize - 1);
+            const newCount = gameState.mines.bombsCount + delta;
+            
+            if (newCount >= 0 && newCount <= maxBombs) {
+                gameState.mines.bombsCount = newCount;
+                document.getElementById('mines-bomb-count').textContent = newCount;
+                generateMinesField();
+                updateMinesUI();
+            }
+        }
+
         function generateMinesField() {
             const field = document.getElementById('mines-field');
             field.innerHTML = '';
-            field.style.gridTemplateColumns = `repeat(${gameState.mines.fieldSize}, 45px)`;
+            
+            field.style.gridTemplateColumns = `repeat(${gameState.mines.fieldSize}, 50px)`;
             
             const totalCells = gameState.mines.fieldSize * gameState.mines.fieldSize;
             
             gameState.mines.bombs = [];
             while (gameState.mines.bombs.length < gameState.mines.bombsCount) {
                 const bomb = Math.floor(Math.random() * totalCells);
-                if (!gameState.mines.bombs.includes(bomb)) gameState.mines.bombs.push(bomb);
+                if (!gameState.mines.bombs.includes(bomb)) {
+                    gameState.mines.bombs.push(bomb);
+                }
             }
             
             gameState.mines.opened = [];
@@ -1077,17 +1206,25 @@
         }
 
         function startMinesGame() {
-            if (gameState.mines.currentBet > gameState.balance) { alert('Недостаточно средств!'); return; }
+            if (gameState.mines.currentBet > gameState.balance) {
+                alert('Недостаточно средств!');
+                return;
+            }
+            
             gameState.balance -= gameState.mines.currentBet;
             gameState.gamesPlayed++;
+            
             updateProfileUI();
             generateMinesField();
+            
             gameState.mines.gameActive = true;
             updateMinesUI();
         }
 
         function openMinesCell(index) {
-            if (!gameState.mines.gameActive || gameState.mines.gameOver || gameState.mines.opened.includes(index)) return;
+            if (!gameState.mines.gameActive || gameState.mines.gameOver || gameState.mines.opened.includes(index)) {
+                return;
+            }
             
             const cell = document.querySelector(`.mines-cell[data-index="${index}"]`);
             gameState.mines.opened.push(index);
@@ -1097,53 +1234,88 @@
                 cell.classList.add('mine');
                 gameState.mines.gameOver = true;
                 gameState.mines.gameActive = false;
-                showLoseModal(`💥 Мина! Потеряно ${gameState.mines.currentBet} монет`);
+                
+                showLoseModal('Вы попали на мину!');
             } else {
                 cell.innerHTML = '✨';
                 cell.classList.add('opened');
-                gameState.mines.multiplier += getMinesMultiplierStep();
                 
-                const safeCells = totalCells - gameState.mines.bombsCount;
-                if (gameState.mines.opened.length === safeCells) cashoutMines();
+                const step = getMinesMultiplierStep();
+                gameState.mines.multiplier += step;
+                
+                const safeCells = gameState.mines.fieldSize * gameState.mines.fieldSize - gameState.mines.bombsCount;
+                if (gameState.mines.opened.length === safeCells) {
+                    cashoutMines();
+                }
             }
+            
             updateMinesUI();
         }
 
         function updateMinesUI() {
             const potentialWin = Math.floor(gameState.mines.currentBet * gameState.mines.multiplier);
+            const step = getMinesMultiplierStep();
+            const maxMult = getMaxPossibleMultiplier();
+            
             document.getElementById('mines-multiplier').textContent = gameState.mines.multiplier.toFixed(2) + 'x';
             document.getElementById('mines-win').textContent = potentialWin;
             
-            const step = getMinesMultiplierStep();
-            const mineBonus = gameState.mines.bombsCount * [0,0,0,0.025,0,0.018,0.012][gameState.mines.fieldSize] || 0;
-            document.getElementById('mines-bonus-info').innerHTML = `🔥 +${Math.round(mineBonus * 100)}% за мину • +${Math.round(step * 100)}% за клетку`;
+            const bonusPercent = Math.round(step * 100);
+            const mineBonusPercent = gameState.mines.bombsCount * {
+                3: 2,
+                5: 1.5,
+                7: 1
+            }[gameState.mines.fieldSize];
             
-            const maxMult = 1 + (step * (gameState.mines.fieldSize * gameState.mines.fieldSize - gameState.mines.bombsCount));
-            document.getElementById('mines-max-mult').innerHTML = `📈 Макс: ${maxMult.toFixed(2)}x • ${Math.floor(gameState.mines.currentBet * maxMult)} монет`;
+            document.getElementById('mines-bonus-info').innerHTML = 
+                `🔥 +${mineBonusPercent}% за мину • Всего +${bonusPercent}% за клетку`;
             
-            const btn = document.getElementById('mines-cashout-btn');
-            if (!gameState.mines.gameActive) { btn.style.opacity = '0.5'; btn.innerHTML = '<i class="fas fa-coins"></i> Забрать'; }
-            else { btn.style.opacity = '1'; btn.innerHTML = `<i class="fas fa-coins"></i> Забрать ${potentialWin}`; }
+            document.getElementById('mines-max-mult').innerHTML = 
+                `📈 Макс. множитель: ${maxMult.toFixed(2)}x • Выигрыш: ${Math.floor(gameState.mines.currentBet * maxMult)}`;
+            
+            const cashoutBtn = document.getElementById('mines-cashout-btn');
+            const startBtn = document.getElementById('mines-start-btn');
+            
+            if (!gameState.mines.gameActive) {
+                cashoutBtn.innerHTML = '<i class="fas fa-coins"></i> Забрать';
+                cashoutBtn.style.opacity = '0.5';
+                startBtn.innerHTML = '<i class="fas fa-play"></i> Новая игра';
+            } else if (gameState.mines.gameOver) {
+                cashoutBtn.innerHTML = '<i class="fas fa-flag"></i> Конец';
+                cashoutBtn.style.opacity = '0.5';
+                startBtn.innerHTML = '<i class="fas fa-redo"></i> Новая игра';
+            } else {
+                cashoutBtn.innerHTML = `<i class="fas fa-coins"></i> Забрать ${potentialWin}`;
+                cashoutBtn.style.opacity = '1';
+                startBtn.innerHTML = '<i class="fas fa-play"></i> Игра идет';
+            }
         }
 
         function cashoutMines() {
-            if (!gameState.mines.gameActive || gameState.mines.opened.length === 0) return;
+            if (!gameState.mines.gameActive || gameState.mines.opened.length === 0) {
+                return;
+            }
+            
             gameState.mines.gameActive = false;
             gameState.mines.gameOver = true;
             
             const winAmount = Math.floor(gameState.mines.currentBet * gameState.mines.multiplier);
             gameState.balance += winAmount;
             gameState.wins++;
+            
             updateProfileUI();
-            showWinModal(`💰 +${winAmount} монет!`, `${gameState.mines.multiplier.toFixed(2)}x`);
+            showWinModal(winAmount, gameState.mines.multiplier);
             
             gameState.mines.bombs.forEach(index => {
                 const cell = document.querySelector(`.mines-cell[data-index="${index}"]`);
-                if (cell) { cell.innerHTML = '💣'; cell.style.background = 'linear-gradient(145deg, #e3342f, #c53030)'; }
+                if (cell && !cell.classList.contains('mine')) {
+                    cell.innerHTML = '💣';
+                    cell.style.background = 'linear-gradient(145deg, #e3342f, #c53030)';
+                }
             });
         }
 
-        // ========== РАКЕТКА ==========
+        // ========== ИГРА "РАКЕТКА" ==========
         function initRocketGame() {
             gameState.rocket.currentBet = gameState.bet;
             document.getElementById('rocket-bet').textContent = gameState.rocket.currentBet;
@@ -1168,44 +1340,97 @@
             gameState.rocket.gameActive = false;
             gameState.rocket.gameOver = false;
             
-            document.getElementById('rocket').style.bottom = '30px';
-            document.getElementById('rocket-fire').style.display = 'block';
+            const rocket = document.getElementById('rocket');
+            rocket.style.bottom = '30px';
+            
+            const fire = document.getElementById('rocket-fire');
+            fire.style.display = 'block';
+            
             document.getElementById('multiplier-progress').style.width = '0%';
             
-            if (gameState.rocket.flightInterval) clearInterval(gameState.rocket.flightInterval);
+            if (gameState.rocket.flightInterval) {
+                clearInterval(gameState.rocket.flightInterval);
+                gameState.rocket.flightInterval = null;
+            }
+            
             updateRocketUI();
         }
 
         function startRocketFlight() {
-            if (gameState.rocket.gameOver || !gameState.rocket.gameActive) {
-                if (gameState.rocket.currentBet > gameState.balance) { alert('Недостаточно средств!'); return; }
+            if (gameState.rocket.gameOver) {
+                if (gameState.rocket.currentBet > gameState.balance) {
+                    alert('Недостаточно средств!');
+                    return;
+                }
+                
                 gameState.balance -= gameState.rocket.currentBet;
                 gameState.gamesPlayed++;
                 updateProfileUI();
                 
                 const rand = Math.random();
-                if (rand < 0.8) gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 1.5;
-                else if (rand < 0.95) gameState.rocket.explodeAtMultiplier = 2.5 + Math.random() * 1.5;
-                else gameState.rocket.explodeAtMultiplier = 4 + Math.random() * 2;
+                if (rand < 0.85) {
+                    gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2;
+                } else if (rand < 0.95) {
+                    gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2;
+                } else {
+                    gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 3;
+                }
                 
                 resetRocket();
                 gameState.rocket.gameActive = true;
                 gameState.rocket.flying = true;
+                
+                gameState.rocket.flightInterval = setInterval(flyRocket, 100);
+            } else {
+                if (gameState.rocket.currentBet > gameState.balance) {
+                    alert('Недостаточно средств!');
+                    return;
+                }
+                
+                gameState.balance -= gameState.rocket.currentBet;
+                gameState.gamesPlayed++;
+                updateProfileUI();
+                
+                const rand = Math.random();
+                if (rand < 0.85) {
+                    gameState.rocket.explodeAtMultiplier = 1 + Math.random() * 2;
+                } else if (rand < 0.95) {
+                    gameState.rocket.explodeAtMultiplier = 3 + Math.random() * 2;
+                } else {
+                    gameState.rocket.explodeAtMultiplier = 5 + Math.random() * 3;
+                }
+                
+                gameState.rocket.gameActive = true;
+                gameState.rocket.flying = true;
                 gameState.rocket.flightInterval = setInterval(flyRocket, 100);
             }
+            
             updateRocketUI();
         }
 
         function flyRocket() {
-            if (!gameState.rocket.flying || gameState.rocket.exploded) return;
+            if (!gameState.rocket.flying || gameState.rocket.exploded) {
+                return;
+            }
             
-            gameState.rocket.height += 3;
-            gameState.rocket.speed = 80 + gameState.rocket.height * 0.8;
-            gameState.rocket.multiplier += 0.015 + (gameState.rocket.height / 10000);
+            const speedMultiplier = Math.max(1, gameState.rocket.multiplier / 60);
+            gameState.rocket.height += 3 * speedMultiplier;
+            gameState.rocket.speed = 80 + gameState.rocket.height * 1.0;
             
-            document.getElementById('rocket').style.bottom = Math.min(30 + (gameState.rocket.height / 15), 240) + 'px';
+            const growthRate = 0.015 + (gameState.rocket.height / 8000);
+            gameState.rocket.multiplier += growthRate * speedMultiplier;
             
-            if (gameState.rocket.multiplier >= gameState.rocket.explodeAtMultiplier) explodeRocket();
+            const rocket = document.getElementById('rocket');
+            const maxHeight = 300;
+            const rocketHeight = Math.min(gameState.rocket.height, 1000);
+            const bottomPos = 30 + (rocketHeight / 1000) * (maxHeight - 100);
+            rocket.style.bottom = bottomPos + 'px';
+            
+            if (gameState.rocket.multiplier >= gameState.rocket.explodeAtMultiplier && !gameState.rocket.exploded) {
+                explodeRocket();
+                return;
+            }
+            
             updateRocketUI();
         }
 
@@ -1213,60 +1438,100 @@
             gameState.rocket.exploded = true;
             gameState.rocket.flying = false;
             gameState.rocket.gameOver = true;
-            document.getElementById('rocket-fire').style.display = 'none';
-            showLoseModal(`💥 Взрыв на ${gameState.rocket.multiplier.toFixed(2)}x! Потеряно ${gameState.rocket.currentBet} монет`);
-            if (gameState.rocket.flightInterval) clearInterval(gameState.rocket.flightInterval);
+            
+            const fire = document.getElementById('rocket-fire');
+            fire.style.display = 'none';
+            
+            showLoseModal(`Ракета взорвалась на ${gameState.rocket.multiplier.toFixed(2)}x!`);
+            
+            if (gameState.rocket.flightInterval) {
+                clearInterval(gameState.rocket.flightInterval);
+                gameState.rocket.flightInterval = null;
+            }
+            
             updateRocketUI();
         }
 
         function updateRocketUI() {
+            const potentialWin = Math.floor(gameState.rocket.currentBet * gameState.rocket.multiplier);
+            
             document.getElementById('rocket-multiplier').textContent = gameState.rocket.multiplier.toFixed(2) + 'x';
-            document.getElementById('rocket-win').textContent = Math.floor(gameState.rocket.currentBet * gameState.rocket.multiplier);
+            document.getElementById('rocket-win').textContent = potentialWin;
             document.getElementById('rocket-height').textContent = Math.round(gameState.rocket.height) + 'м';
             document.getElementById('rocket-speed').textContent = Math.round(gameState.rocket.speed) + 'км/ч';
-            document.getElementById('multiplier-progress').style.width = Math.min((gameState.rocket.multiplier / 8) * 100, 100) + '%';
             
-            const btn = document.getElementById('rocket-cashout-btn');
-            if (gameState.rocket.gameActive && gameState.rocket.height > 0) {
-                btn.style.opacity = '1';
-                btn.innerHTML = `<i class="fas fa-coins"></i> Забрать ${Math.floor(gameState.rocket.currentBet * gameState.rocket.multiplier)}`;
+            const progress = (gameState.rocket.multiplier / 100) * 100;
+            document.getElementById('multiplier-progress').style.width = Math.min(progress, 100) + '%';
+            
+            const cashoutBtn = document.getElementById('rocket-cashout-btn');
+            const startBtn = document.getElementById('rocket-start-btn');
+            
+            if (!gameState.rocket.gameActive) {
+                cashoutBtn.innerHTML = '<i class="fas fa-coins"></i> Забрать';
+                cashoutBtn.style.opacity = '0.5';
+                startBtn.innerHTML = '<i class="fas fa-rocket"></i> Запустить';
+            } else if (gameState.rocket.gameOver) {
+                cashoutBtn.innerHTML = '<i class="fas fa-flag"></i> Конец';
+                cashoutBtn.style.opacity = '0.5';
+                startBtn.innerHTML = '<i class="fas fa-redo"></i> Заново';
+            } else if (gameState.rocket.flying) {
+                cashoutBtn.innerHTML = `<i class="fas fa-coins"></i> Забрать ${potentialWin}`;
+                cashoutBtn.style.opacity = '1';
+                startBtn.innerHTML = '<i class="fas fa-rocket"></i> Летит...';
             } else {
-                btn.style.opacity = '0.5';
-                btn.innerHTML = '<i class="fas fa-coins"></i> Забрать';
+                cashoutBtn.innerHTML = '<i class="fas fa-coins"></i> Забрать';
+                cashoutBtn.style.opacity = gameState.rocket.height > 0 ? '1' : '0.5';
+                startBtn.innerHTML = '<i class="fas fa-rocket"></i> Запустить';
             }
         }
 
         function cashoutRocket() {
-            if (!gameState.rocket.gameActive || gameState.rocket.height === 0) return;
+            if (!gameState.rocket.gameActive || gameState.rocket.height === 0) {
+                return;
+            }
             
             gameState.rocket.flying = false;
             gameState.rocket.gameActive = false;
             gameState.rocket.gameOver = true;
-            if (gameState.rocket.flightInterval) clearInterval(gameState.rocket.flightInterval);
+            
+            if (gameState.rocket.flightInterval) {
+                clearInterval(gameState.rocket.flightInterval);
+                gameState.rocket.flightInterval = null;
+            }
             
             const winAmount = Math.floor(gameState.rocket.currentBet * gameState.rocket.multiplier);
             gameState.balance += winAmount;
             gameState.wins++;
+            
             updateProfileUI();
-            showWinModal(`💰 +${winAmount} монет!`, `${gameState.rocket.multiplier.toFixed(2)}x • ${Math.round(gameState.rocket.height)}м`);
+            showWinModal(winAmount, gameState.rocket.multiplier, gameState.rocket.height);
         }
 
-        // ========== МОДАЛКИ РЕЗУЛЬТАТОВ ==========
-        function showWinModal(text, mult) {
-            document.getElementById('win-text').innerHTML = `${text}<br><span style="opacity:0.8">Множитель: ${mult}</span>`;
+        // ========== МОДАЛЬНЫЕ ОКНА ==========
+        function showWinModal(amount, multiplier, height = 0) {
+            document.getElementById('win-amount').textContent = amount;
+            document.getElementById('win-mult').textContent = multiplier.toFixed(2) + 'x';
+            if (height > 0) {
+                document.getElementById('win-mult').innerHTML += `<br>Высота: ${Math.round(height)}м`;
+            }
             showModal('win-modal');
         }
 
-        function showLoseModal(text) {
-            document.getElementById('lose-text').innerHTML = text;
+        function showLoseModal(reason) {
+            document.getElementById('lose-bet').textContent = gameState.bet;
+            document.getElementById('lose-reason').textContent = reason;
             showModal('lose-modal');
         }
 
         function closeModalAndNewGame() {
             closeModal();
-            const current = document.querySelector('.screen.active').id;
-            if (current === 'mines-screen') startMinesGame();
-            if (current === 'rocket-screen') startRocketFlight();
+            const currentScreen = document.querySelector('.screen.active').id;
+            
+            if (currentScreen === 'mines-screen') {
+                startMinesGame();
+            } else if (currentScreen === 'rocket-screen') {
+                startRocketFlight();
+            }
         }
 
         // ========== ИНИЦИАЛИЗАЦИЯ ==========
@@ -1275,7 +1540,7 @@
             initMinesGame();
             initRocketGame();
             
-            if (window.Telegram?.WebApp) {
+            if (window.Telegram && Telegram.WebApp) {
                 Telegram.WebApp.expand();
                 Telegram.WebApp.setHeaderColor('#15151e');
                 Telegram.WebApp.setBackgroundColor('#15151e');

@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        /* ========== ОСНОВНЫЕ СТИЛИ ========== */
         * {
             margin: 0;
             padding: 0;
@@ -27,7 +26,6 @@
             width: 100%;
         }
 
-        /* ========== НИЖНЕЕ МЕНЮ ========== */
         .bottom-menu {
             position: fixed;
             bottom: 0;
@@ -77,7 +75,6 @@
             box-shadow: 0 2px 5px rgba(255,107,107,0.3);
         }
 
-        /* ========== ЭКРАНЫ ========== */
         .screen { 
             display: none; 
             min-height: 100vh; 
@@ -88,7 +85,7 @@
         }
         .screen.active { display: block; }
 
-        /* ========== ИГРЫ - ГЛАВНЫЙ ЭКРАН ========== */
+        /* ========== ИГРЫ ГЛАВНЫЙ ЭКРАН ========== */
         .games-header { text-align: center; padding: 25px 0 30px; }
         .games-header h2 {
             font-size: 36px;
@@ -196,9 +193,45 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .stat-card .label { font-size: 11px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .stat-card .label { 
+            font-size: 11px; 
+            opacity: 0.9; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-weight: 600;
+            color: #ffa726;
+        }
 
-        /* ========== ПРОМОКОД - СЕКРЕТНЫЙ, КРАСИВЫЙ ========== */
+        /* ========== QUICK ACTIONS - КРАСИВО ========== */
+        .quick-actions { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 20px; }
+        
+        .action-btn {
+            background: linear-gradient(145deg, #1a1a25, #151520);
+            border: 1px solid #252530;
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 0 #0a0a0f;
+        }
+        .action-btn:active { transform: translateY(4px); box-shadow: 0 2px 0 #0a0a0f; }
+        .action-btn i { font-size: 24px; color: #ffa726; width: 30px; }
+        .action-btn .title { 
+            font-weight: 700; 
+            margin-bottom: 4px; 
+            font-size: 16px; 
+            color: #fff;
+        }
+        .action-btn .desc { 
+            font-size: 12px; 
+            opacity: 0.6; 
+            color: #8e8e99;
+        }
+
+        /* ========== ПРОМОКОД - ИСПРАВЛЕН ========== */
         .promo-section {
             background: linear-gradient(145deg, #1a1a25, #151520);
             border-radius: 20px;
@@ -275,7 +308,7 @@
             border-radius: 14px;
             padding: 0 25px;
             color: white;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -286,6 +319,7 @@
             box-shadow: 0 6px 0 #b3473f;
             text-transform: uppercase;
             letter-spacing: 1px;
+            min-width: 140px;
         }
 
         .promo-btn:active {
@@ -356,7 +390,7 @@
         .game-stat-value { font-size: 24px; font-weight: 800; color: #ffa726; margin-bottom: 4px; text-shadow: 0 0 10px rgba(255,167,38,0.3); }
         .game-stat-label { font-size: 10px; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
-        /* ========== МИНЫ - ПОЛНОСТЬЮ РАБОЧИЕ ========== */
+        /* ========== МИНЫ ========== */
         .mines-field {
             display: grid;
             gap: 8px;
@@ -401,7 +435,7 @@
             100% { transform: scale(1); }
         }
 
-        /* ========== НАСТРОЙКИ ИГР ========== */
+        /* ========== НАСТРОЙКИ ИГР - ИСПРАВЛЕНЫ ========== */
         .game-settings, .bet-section {
             background: linear-gradient(145deg, #1a1a25, #151520);
             border-radius: 20px;
@@ -420,8 +454,23 @@
             border-bottom: 1px solid rgba(37,37,48,0.5);
         }
         .settings-row:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
-        .settings-label { font-size: 15px; font-weight: 600; opacity: 0.9; display: flex; align-items: center; gap: 8px; }
-        .settings-value { font-size: 18px; font-weight: 700; color: #ffa726; min-width: 50px; text-align: center; }
+        .settings-label { 
+            font-size: 15px; 
+            font-weight: 600; 
+            opacity: 0.9; 
+            display: flex; 
+            align-items: center; 
+            gap: 8px;
+            color: #ffa726;
+        }
+        .settings-value { 
+            font-size: 18px; 
+            font-weight: 700; 
+            color: #ffffff; 
+            min-width: 50px; 
+            text-align: center;
+            text-shadow: 0 0 5px rgba(255,255,255,0.3);
+        }
         .settings-controls { display: flex; align-items: center; gap: 12px; }
         
         .control-btn {
@@ -440,8 +489,15 @@
         }
         .control-btn:active { background: #2a2a35; transform: scale(0.9); }
 
-        /* ========== СТАВКА ========== */
-        .bet-title { font-size: 18px; font-weight: 700; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: #ffa726; }
+        .bet-title { 
+            font-size: 18px; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #ffa726; 
+        }
         .bet-amount {
             text-align: center;
             font-size: 42px;
@@ -485,7 +541,6 @@
         }
         .bet-btn.special:active { transform: translateY(3px); box-shadow: 0 2px 0 #b3473f; }
 
-        /* ========== КНОПКИ ДЕЙСТВИЙ ========== */
         .action-buttons {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -655,7 +710,6 @@
             box-shadow: 0 8px 0 #b3473f;
         }
 
-        /* ========== МОДАЛКИ ========== */
         .modal {
             position: fixed;
             top: 0;
@@ -696,7 +750,6 @@
         }
         .modal-text { font-size: 18px; margin-bottom: 30px; opacity: 0.9; line-height: 1.6; font-weight: 500; }
 
-        /* ========== АДАПТАЦИЯ ========== */
         @media (max-width: 380px) {
             .mines-cell { width: 42px; height: 42px; font-size: 20px; }
             .game-stats { gap: 10px; padding: 8px 12px; }
@@ -706,7 +759,7 @@
             .clicker-button i { font-size: 70px; }
             .clicker-stat-item { min-width: 110px; padding: 15px; }
             .promo-input-group { flex-direction: column; }
-            .promo-btn { padding: 16px; }
+            .promo-btn { padding: 16px; width: 100%; }
         }
         
         @media (min-width: 768px) {
@@ -733,7 +786,7 @@
         </div>
     </div>
 
-    <!-- ========== ЭКРАН ИГР ========== -->
+    <!-- ЭКРАН ИГР -->
     <div class="screen active" id="games-screen">
         <div class="games-header">
             <h2>🔥 SPOT GAMES</h2>
@@ -769,7 +822,7 @@
         </div>
     </div>
 
-    <!-- ========== ЭКРАН ПРОФИЛЯ ========== -->
+    <!-- ЭКРАН ПРОФИЛЯ -->
     <div class="screen" id="profile-screen">
         <div class="profile-header">
             <div class="user-avatar" id="telegram-avatar">
@@ -798,7 +851,7 @@
             </div>
         </div>
         
-        <!-- ========== ПРОМОКОД - СЕКРЕТНЫЙ, БЕЗ ПОДСКАЗОК ========== -->
+        <!-- ПРОМОКОД - ИСПРАВЛЕН -->
         <div class="promo-section">
             <div class="promo-title">
                 <i class="fas fa-ticket-alt"></i> ПРОМОКОД
@@ -806,7 +859,7 @@
             <div class="promo-input-group">
                 <input type="text" class="promo-input" id="promo-input" placeholder="ВВЕДИ КОД" maxlength="20" autocomplete="off">
                 <button class="promo-btn" onclick="activatePromo()">
-                    <i class="fas fa-gift"></i> АКТИВ
+                    <i class="fas fa-gift"></i> АКТИВИРОВАТЬ
                 </button>
             </div>
             <div class="promo-hint">
@@ -827,13 +880,13 @@
                 <i class="fas fa-trophy"></i>
                 <div class="text">
                     <div class="title">ДОСТИЖЕНИЯ</div>
-                    <div class="desc">В разработке</div>
+                    <div class="desc">⚡ В разработке ⚡</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ========== ЭКРАН КЛИКЕРА ========== -->
+    <!-- ЭКРАН КЛИКЕРА -->
     <div class="screen" id="clicker-screen">
         <div class="game-header">
             <div class="back-btn" onclick="backToGames()">
@@ -883,7 +936,7 @@
         </div>
     </div>
 
-    <!-- ========== ЭКРАН МИНЫ ========== -->
+    <!-- ЭКРАН МИНЫ -->
     <div class="screen" id="mines-screen">
         <div class="game-header">
             <div class="back-btn" onclick="backToGames()">
@@ -927,7 +980,7 @@
                 </div>
             </div>
             <div class="settings-row">
-                <div class="settings-label"><i class="fas fa-bomb"></i> КОЛИЧЕСТВО МИН</div>
+                <div class="settings-label"><i class="fas fa-bomb"></i> МИНЫ</div>
                 <div class="settings-controls">
                     <div class="control-btn" onclick="changeMinesBombs(-1)"><i class="fas fa-minus"></i></div>
                     <div class="settings-value" id="mines-bomb-count">1</div>
@@ -952,7 +1005,7 @@
         </div>
     </div>
 
-    <!-- ========== ЭКРАН РАКЕТКА ========== -->
+    <!-- ЭКРАН РАКЕТКА -->
     <div class="screen" id="rocket-screen">
         <div class="game-header">
             <div class="back-btn" onclick="backToGames()">
@@ -1016,7 +1069,7 @@
         </div>
     </div>
 
-    <!-- ========== МОДАЛЬНЫЕ ОКНА ========== -->
+    <!-- МОДАЛЬНЫЕ ОКНА -->
     <div class="modal" id="win-modal">
         <div class="modal-content">
             <div class="modal-icon">🎉</div>
@@ -1174,7 +1227,7 @@
             }
         }
 
-        // ========== ПРОМОКОДЫ ==========
+        // ========== ПРОМОКОДЫ - ИСПРАВЛЕНО ==========
         function loadUsedPromos() {
             if (!window.Telegram?.WebApp?.CloudStorage || !gameState.userId) return;
             Telegram.WebApp.CloudStorage.getItem(`promos_${gameState.userId}`, (e, val) => {
@@ -1205,8 +1258,7 @@
                 return;
             }
 
-            // Бесконечные активации - без проверки
-            // Начисляем бонус
+            // Начисляем бонус в COIN
             gameState.clicker.coins += promo.bonus;
             gameState.clicker.taps = gameState.clicker.coins * gameState.clicker.rate;
             
